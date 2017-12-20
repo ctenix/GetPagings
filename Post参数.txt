@@ -1,0 +1,23 @@
+curl 'http://npd.nsfc.gov.cn/fundingProjectSearchAction!search.action' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3' -H 'Connection: keep-alive' -H 'Cookie: _gscu_1512923953=65786507kywre255; JSESSIONID=841B433A5C13F8EF1A872AF1AF8F3616; csd=59' -H 'DNT: 1' -H 'Host: npd.nsfc.gov.cn' -H 'Referer: http://npd.nsfc.gov.cn/fundingProjectSearchAction!search.action' -H 'User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0' -H 'Content-Type: application/x-www-form-urlencoded' --data 'fundingProject.projectNo=&sort=0&pageSize=7&currentPage=2&fundingProject.name=&fundingProject.person=&fundingProject.org=%E5%A4%A9%E6%B4%A5%E5%A4%A7%E5%AD%A6&fundingProject.applyCode=B&fundingProject.grantCode=&fundingProject.subGrantCode=&fundingProject.helpGrantCode=&fundingProject.keyword=&fundingProject.statYear=2015&checkCode=%E8%AF%B7%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81%E7%A0%81'
+
+
+
+checkCode=请输入验证码
+currentPage=2
+fundingProject.applyCode=B
+fundingProject.grantCode=
+fundingProject.helpGrantCode=
+fundingProject.keyword=
+fundingProject.name=
+fundingProject.org=天津大学
+fundingProject.person=
+fundingProject.projectNo=
+fundingProject.statYear=2015
+fundingProject.subGrantCode=
+pageSize=7
+sort=0
+
+
+http://npd.nsfc.gov.cn/fundingProjectSearchAction!search.action?checkCode=%E8%AF%B7%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81%E7%A0%81&currentPage=2&fundingProject.applyCode=B&fundingProject.grantCode=&fundingProject.helpGrantCode=&fundingProject.keyword=&fundingProject.name=&fundingProject.org=%E5%A4%A9%E6%B4%A5%E5%A4%A7%E5%AD%A6&fundingProject.person=&fundingProject.projectNo=&fundingProject.statYear=2015&fundingProject.subGrantCode=&pageSize=7&sort=0
+
+fundingProject.org=%E5%A4%A9%E6%B4%A5%E5%A4%A7%E5%AD%A6

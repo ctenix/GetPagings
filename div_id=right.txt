@@ -1,0 +1,1451 @@
+<div id="right">
+
+		<div class="jlu list2">
+
+			<div class="left">
+
+				<ul id="project_result">
+
+					
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">高压制备多原子填充型CoSb3材料电热输运性能的协同调控</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51301024
+
+									</dd>
+
+									<dd>
+
+										项目类别：青年科学基金项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										长春理工大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										邓乐
+
+									</dd>
+
+									<dd>
+
+										资助经费：25（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：热电材料；CoSb3；高压合成；性能优化；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">基于熔体状态探索Bi-Te基热电材料制备新方法及所致构效关系</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371073
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										合肥工业大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										祖方遒
+
+									</dd>
+
+									<dd>
+
+										资助经费：80（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：Bi-Te 基热电合金；熔体状态；结晶相微观结构；热电性能；力学性能
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">模板转印法制备磁等离子体纳米材料及界面磁电耦合对其磁光特性互动的作用机制</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371018
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										北京科技大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										宋玉军
+
+									</dd>
+
+									<dd>
+
+										资助经费：80（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：金属纳米功能材料;模板转印;磁等离子体;界面磁电耦合;磁光效应
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">铁电材料对FePt薄膜垂直磁各向异性调控机理的研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371024
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										北京科技大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										姜勇
+
+									</dd>
+
+									<dd>
+
+										资助经费：80（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：铁电材料；磁性薄膜；磁各向异性；；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">基于霍尔自旋天平结构的新型自旋电子材料及物理机制研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371027
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										北京科技大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										于广华
+
+									</dd>
+
+									<dd>
+
+										资助经费：80（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：磁性薄膜；磁性；微结构；；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">新型Fe3Se4基各向异性纳米结构的硬磁性能调控和矫顽力机制</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371175
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										中国科学院金属研究所
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										李达
+
+									</dd>
+
+									<dd>
+
+										资助经费：80（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：硬磁相；各向异性纳米结构；高磁晶各向异性；反磁化机制；矫顽力
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">半金属哈斯勒合金材料的自旋热电性质研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371105
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										三峡大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										潘礼庆
+
+									</dd>
+
+									<dd>
+
+										资助经费：80（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：自旋塞贝克效应；自旋珀耳帖效应；半金属；自旋相关输运；热输运
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">合金元素对NiTi合金功能特性影响的微观机理研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371017
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										北京航空航天大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										尚家香
+
+									</dd>
+
+									<dd>
+
+										资助经费：80（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：第一原理；功能特性；合金元素；镍钛合金；微观机理
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">纳米多孔镍钼钴合金电极材料的制备及电催化析氢机理研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51341008
+
+									</dd>
+
+									<dd>
+
+										项目类别：专项基金项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										湖南工业大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										杜晶晶
+
+									</dd>
+
+									<dd>
+
+										资助经费：10（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：镍钼钴合金；纳米多孔；电极材料；电催化析氢；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">自旋电子材料与器件</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51322101
+
+									</dd>
+
+									<dd>
+
+										项目类别：优秀青年科学基金项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										清华大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										宋成
+
+									</dd>
+
+									<dd>
+
+										资助经费：100（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：自旋电子学；磁性薄膜；磁电阻；反铁磁；界面
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">无液氦低温强场三维矢量磁矩测量仪器的研制</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51327806
+
+									</dd>
+
+									<dd>
+
+										项目类别：国家重大科研仪器设备研制专项
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										中国科学院物理研究所
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										沈保根
+
+									</dd>
+
+									<dd>
+
+										资助经费：700（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：矢量磁矩；无液氦；低温；强场；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">镧铁硅磁制冷材料动态腐蚀性能及其与磁性的关联</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371026
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										北京科技大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										龙毅
+
+									</dd>
+
+									<dd>
+
+										资助经费：80（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：腐蚀性能；La(Fe,Si)13系列材料；变磁转变；腐蚀疲劳；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">新型复合永磁材料性能增强机理和稳定性研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51331003
+
+									</dd>
+
+									<dd>
+
+										项目类别：重点项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										钢铁研究总院
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										郭朝晖
+
+									</dd>
+
+									<dd>
+
+										资助经费：304（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：永磁材料；稳定性；磁性能；复合材料；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">纳米磁性过渡金属碳化物的可控化学合成、结构及磁性研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51301114
+
+									</dd>
+
+									<dd>
+
+										项目类别：青年科学基金项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										沈阳化工大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										张雅静
+
+									</dd>
+
+									<dd>
+
+										资助经费：25（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：纳米磁性材料；过渡金属碳化物；可控化学合成；非稀土硬磁材料；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">柔性衬底氢掺杂ZnO:Al(AZO)薄膜的类金属导电性质及其应用研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371120
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										深圳大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										朱德亮
+
+									</dd>
+
+									<dd>
+
+										资助经费：80（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：类金属导电性质；H掺杂；AZO薄膜；柔性衬底；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">La(Fe,M)13(M=Si,Al)化合物吸氢动力学研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51301008
+
+									</dd>
+
+									<dd>
+
+										项目类别：青年科学基金项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										北京工业大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										赵金良
+
+									</dd>
+
+									<dd>
+
+										资助经费：25（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：La(Fe,M)13(M=Si,Al)化合物；磁熵变；氢化物；；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">无稀土锰基永磁材料结构与性能研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51371009
+
+									</dd>
+
+									<dd>
+
+										项目类别：面上项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										北京大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										杨金波
+
+									</dd>
+
+									<dd>
+
+										资助经费：85（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：永磁材料；磁性能；结构；非稀土；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">铁磁金属、半金属界面轻元素修饰特性及其对磁性隧道结输运特性影响的"自能"修正理论研究</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：U1304518
+
+									</dd>
+
+									<dd>
+
+										项目类别：联合基金项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										河南师范大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										王天兴
+
+									</dd>
+
+									<dd>
+
+										资助经费：30（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：铁磁金属；界面；轻元素；隧道结；自能
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">基于导电聚合物/纳米多孔金属复合电极的伏安传感器及其在极端环境下的应用</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51301096
+
+									</dd>
+
+									<dd>
+
+										项目类别：青年科学基金项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										山东大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										司鹏超
+
+									</dd>
+
+									<dd>
+
+										资助经费：25（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：纳米多孔金属；导电聚合物；伏安传感器；传感器阵列；
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">耦合增强轻金属/稀土金属配位硼氢化物的储氢特性</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：51301002
+
+									</dd>
+
+									<dd>
+
+										项目类别：青年科学基金项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										安徽工业大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										李永涛
+
+									</dd>
+
+									<dd>
+
+										资助经费：25（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词：金属基储氢材料；金属配位硼氢化物；耦合作用；纳米限域；氢化物反应失稳
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+							<li class="time_li">
+
+								<div class="left">
+
+									<img src="images/tub.png" alt="" />
+
+								</div>
+
+								<dl class="time_dl">
+
+									<dt>
+
+										<font style="font-size:15px;color:blue;">合金化元素的选择及其对(La, Mg)5Ni19 A5B19型相稳定性和电化学储氢性能的影响</font>
+
+									</dt>
+
+									<dd>
+
+										批准号：U1304522
+
+									</dd>
+
+									<dd>
+
+										项目类别：联合基金项目
+
+									</dd>
+
+									<dd>
+
+										依托单位：
+
+										河南理工大学
+
+									</dd>
+
+									<dd>
+
+										项目负责人：
+
+										范燕平
+
+									</dd>
+
+									<dd>
+
+										资助经费：30（万元）
+
+									</dd>
+
+									<dd>
+
+										关键词： 镧-镁-镍基合金；储氢合金；电化学性能；循环稳定性；微观结构
+
+									</dd>
+
+									<dd>
+
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+
+									</dd>
+
+								</dl>
+
+							</li>
+
+						
+
+					
+
+				</ul>
+
+				<font color="red" id="noData" style="padding-left: 200px;"></font>
+
+			</div>
+
+		</div>
+
+	</div>

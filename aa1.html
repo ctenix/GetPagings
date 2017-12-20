@@ -1,0 +1,2303 @@
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>科学基金共享服务网</title>
+		<link href="css/main.css" rel="stylesheet" />
+		<script language="javascript" src="js/tab.js"></script>
+		<script language="javascript" src="js/jquery.js"></script>
+		<script language="javascript" src="js/json2.js"></script>
+		<script language="javascript" src="js/jquery.form.js"></script>
+		<script language="javascript" type="text/javascript"
+			src="My97DatePicker/WdatePicker.js">
+		</script>
+		<script language="javascript" type="text/javascript" src="js/head.js"></script>
+		<script type="text/javascript"><!--
+
+			var checkcode;
+			function random(startnum, endnum) {
+				var upnum = Math.abs(endnum - startnum);
+				var ran = parseInt(Math.random() * 10000000000000000);
+				ran = (ran + 1) % upnum;
+				return ran + startnum;
+			}
+			
+			function generate_checkcode() {
+			
+				this.checkcode = "";
+				var imgstr = "";
+				for ( var i = 0; i < 4; i++) {
+					randnum = this.random(0, 10);
+					this.checkcode += randnum;
+					imgstr += "<img src='images/number/" + randnum
+							+ ".jpg' width=24px height=27px>";
+				}
+				$(".imgcheckcode").html(imgstr);
+				//$("#zwfCode").val(this.checkcode);
+			}
+			
+			var checkcode2;
+			function random2(startnum, endnum) {
+				var upnum = Math.abs(endnum - startnum);
+				var ran = parseInt(Math.random() * 10000000000000000);
+				ran = (ran + 1) % upnum;
+				return ran + startnum;
+			}
+			
+			function generate_checkcode2() {
+			
+				this.checkcode2 = "";
+				var imgstr = "";
+				for ( var i = 0; i < 4; i++) {
+					randnum = this.random2(0, 10);
+					this.checkcode2 += randnum;
+					imgstr += "<img src='images/number/" + randnum
+							+ ".jpg' width=24px height=27px>";
+				}
+				$(".imgcheckcode2").html(imgstr);
+				//$("#zwfCode").val(this.checkcode2);
+			}
+			
+			function changeHeaderNav(number) {
+				var objName = "";
+				var li = null;
+				for ( var i = 1; i <= 6; i++) {
+					if (number == i) {
+						if(number == 2 || number == 6){
+							objName = "#header_li" + i;
+							li = $(objName);
+							li.attr("class", "fir2");
+							return false;
+						}else{
+							objName = "#header_li" + i;
+							li = $(objName);
+							li.attr("class", "fir");
+							return false;
+						}
+					}
+					li = $("#header_li" + i);
+					li.attr("class", null);
+				}
+				
+			}
+			
+			function closeWindow() {
+				window.opener = null;
+				window.open('', '_self');
+				window.close();
+			}
+		--></script>
+	</head>
+	<body onload="generate_checkcode();generate_checkcode2()">
+		<div id="wrap">
+			<div id="container">
+				<div class="top">
+					
+				
+					<span class="text">
+								<a href="javascript:void(0)" onclick="closeWindow()">关闭本页</a>
+					</span>
+					
+					<div class="clear"></div>
+					<div class="nav">
+						<div class="left">
+							<img src="images/logo.png" width="280" alt="" />
+						</div>
+						<div class="right">
+							<ul>
+								<li id="header_li1" class="fir">
+									<a href="granttype1!index.action">首页</a>
+								</li>
+								<li style="width:129px" id="header_li6">
+									<a href="fundingProjectSearchAction.action">资助项目检索</a>
+								</li>
+								<li style="width:129px" id="header_li2">
+									<a href="projectSearch.action">结题项目检索</a>
+								</li>
+								<li id="header_li4">
+									<a href="outCome_search.jsp">成果检索</a>
+								</li>	
+								<li id="header_li3">
+									<a href="protype.action">导航</a>
+								</li>
+								<li id="header_li5">
+									<a href="feedback_show.jsp">用户反馈</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+<script language="javascript" type="text/javascript"
+	src="My97DatePicker/WdatePicker.js">
+</script>
+<link rel="StyleSheet" href="http://npd.nsfc.gov.cn:80/dtree/dtree.css" type="text/css" />
+<script type="text/javascript" src="http://npd.nsfc.gov.cn:80/dtree/dtree.js"></script>
+<script>
+	function js_active(){
+		var con=document.getElementById("showdom");
+		var click=document.getElementById("applydom");
+		function show(){
+			con.style.display = con.style.display=="block"?"none":"block";
+		}
+		document.onclick = function(e){
+			e = e || window.event;
+			var target = e.srcElement || e.target;
+			if(target.tagName.toLowerCase()!='img'){
+				con.style.display="none";
+			}
+		}
+		click.onclick=function(){show();}
+	}
+</script>
+
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+	changeHeaderNav(6);
+	js_active();
+});
+</script>
+<div class="clear"></div>
+<div id="zzh" style="padding-top:5px;">
+	<form id="searchFundingProject" action="fundingProjectSearchAction!search.action" method="post" onsubmit="return check1();">
+		<span class="dwei"><img src="images/xiangmu.png" alt="" /> </span>
+            <table class="zzh_tab" width="300" border="0" cellpadding="0" cellspacing="0" style="margin-left: 330px;margin-top: 15px;">
+				<tbody><tr>
+			    	<td align="right">批准号：</td>
+			        <td><input type="text" name="fundingProject.projectNo" value="" class="user_name" style="width: 150px;"></td>
+			    </tr>
+			    <input type="hidden" value="0" name="sort" id="yearSortHidden" style="width: 150px" />
+	
+				<input type="hidden" value="387395" id="hiddenResultNum" style="width: 150px" />
+	
+				<input type="hidden" value="7" name="pageSize" id="pageSize" style="width: 150px" />
+	
+				<input type="hidden" name="currentPage" id="currentPage" value="2" />
+			    
+			    <tr>
+			    	<td align="right">项目名称：</td>
+			        <td><input type="text" name="fundingProject.name" value="" class="mail" style="width: 150px;"></td>
+			    </tr>
+			    <tr>
+			    	<td align="right">项目负责人：</td>
+			        <td><input type="text" name="fundingProject.person" value="" class="mail" style="width: 150px;"></td>
+			    </tr>
+			    <tr>
+			    	<td align="right">单位名称：</td>
+			        <td><input type="text" name="fundingProject.org" value="" id="orgnization" class="mail" style="width: 150px;"></td>
+			    </tr>
+			    <tr>
+			    	<td align="right">申请代码：</td>
+			       	<td style="position:relative">
+			       		<input type="text" name="fundingProject.applyCode" value="" id="applyCode" class="mail" style="width: 150px;" onkeyup="loadApp();">
+			    	 	<div style="display:none; width:200px; position:absolute; top :0; right:-180px; padding-left:10px; background:#fff;overflow:hidden;" id="showApplyCode"></div>
+			    	
+			    		<span id="applydom" style="position: absolute; top:4px; display:block; right:40px;"><img src="images/application_osx_add.png" /></span>
+			    		<div id="showdom"  style="display:none; min-width:160px; height:220px; overflow-y: scroll; position:absolute; top :25px; left:10px; padding-left:10px; background:#fff;">
+			    		 
+
+
+
+
+    <script type="text/javascript">
+
+		d = new dTree('d');
+d.add(0,-1,'00.申请代码','javascript:change(\'00\');','申请代码');
+d.add(1,0,'A.数理综合处','javascript:change(\'A\');','数理综合处');
+d.add(2,1,'A01.数学','javascript:change(\'A01\');','数学');
+d.add(3,2,'A0101.数论','javascript:change(\'A0101\');','数论');
+d.add(4,2,'A0102.代数学','javascript:change(\'A0102\');','代数学');
+d.add(5,2,'A0103.几何学','javascript:change(\'A0103\');','几何学');
+d.add(6,2,'A0104.拓扑学','javascript:change(\'A0104\');','拓扑学');
+d.add(7,2,'A0105.函数论','javascript:change(\'A0105\');','函数论');
+d.add(8,2,'A0106.泛函分析','javascript:change(\'A0106\');','泛函分析');
+d.add(9,2,'A0107.常微分方程与动力系统','javascript:change(\'A0107\');','常微分方程与动力系统');
+d.add(10,2,'A0108.偏微分方程','javascript:change(\'A0108\');','偏微分方程');
+d.add(11,2,'A0109.数学物理','javascript:change(\'A0109\');','数学物理');
+d.add(12,2,'A0110.概率论与随机分析','javascript:change(\'A0110\');','概率论与随机分析');
+d.add(13,2,'A0111.数理统计','javascript:change(\'A0111\');','数理统计');
+d.add(14,2,'A0112.运筹学','javascript:change(\'A0112\');','运筹学');
+d.add(15,2,'A0113.控制论中的数学方法','javascript:change(\'A0113\');','控制论中的数学方法');
+d.add(16,2,'A0114.应用数学方法','javascript:change(\'A0114\');','应用数学方法');
+d.add(17,2,'A0115.数理逻辑和与计算机相关的数学','javascript:change(\'A0115\');','数理逻辑和与计算机相关的数学');
+d.add(18,2,'A0116.组合数学','javascript:change(\'A0116\');','组合数学');
+d.add(19,2,'A0117.计算数学与科学工程计算','javascript:change(\'A0117\');','计算数学与科学工程计算');
+d.add(20,1,'A02.力学','javascript:change(\'A02\');','力学');
+d.add(21,20,'A0201.力学中的基本问题和方法','javascript:change(\'A0201\');','力学中的基本问题和方法');
+d.add(22,20,'A0202.动力学与控制','javascript:change(\'A0202\');','动力学与控制');
+d.add(23,20,'A0203.固体力学','javascript:change(\'A0203\');','固体力学');
+d.add(24,20,'A0204.流体力学','javascript:change(\'A0204\');','流体力学');
+d.add(25,20,'A0205.生物力学','javascript:change(\'A0205\');','生物力学');
+d.add(26,20,'A0206.爆炸与冲击动力学','javascript:change(\'A0206\');','爆炸与冲击动力学');
+d.add(27,1,'A03.天文学','javascript:change(\'A03\');','天文学');
+d.add(28,27,'A0301.宇宙学','javascript:change(\'A0301\');','宇宙学');
+d.add(29,27,'A0302.星系和类星体','javascript:change(\'A0302\');','星系和类星体');
+d.add(30,27,'A0303.恒星与星际物质','javascript:change(\'A0303\');','恒星与星际物质');
+d.add(31,27,'A0304.太阳和太阳系','javascript:change(\'A0304\');','太阳和太阳系');
+d.add(32,27,'A0305.天体中基本物理过程的理论和实验','javascript:change(\'A0305\');','天体中基本物理过程的理论和实验');
+d.add(33,27,'A0306.天体测量和天文地球动力学','javascript:change(\'A0306\');','天体测量和天文地球动力学');
+d.add(34,27,'A0307.天体力学和人造卫星动力学','javascript:change(\'A0307\');','天体力学和人造卫星动力学');
+d.add(35,27,'A0308.天文技术和方法','javascript:change(\'A0308\');','天文技术和方法');
+d.add(36,27,'A0309.中、西方天文学史','javascript:change(\'A0309\');','中、西方天文学史');
+d.add(37,27,'A0310.天文学同其他学科的交叉','javascript:change(\'A0310\');','天文学同其他学科的交叉');
+d.add(38,1,'A04.物理学I','javascript:change(\'A04\');','物理学I');
+d.add(39,38,'A0401.凝聚态物性I:结构、力学和热学性质','javascript:change(\'A0401\');','凝聚态物性I:结构、力学和热学性质');
+d.add(40,38,'A0402.凝聚态物性 II ：电子结构、电学、磁学和光学性质','javascript:change(\'A0402\');','凝聚态物性 II ：电子结构、电学、磁学和光学性质');
+d.add(41,38,'A0403.原子和分子物理','javascript:change(\'A0403\');','原子和分子物理');
+d.add(42,38,'A0404.光学','javascript:change(\'A0404\');','光学');
+d.add(43,38,'A0405.声学','javascript:change(\'A0405\');','声学');
+d.add(44,1,'A05.物理学II','javascript:change(\'A05\');','物理学II');
+d.add(45,44,'A0501.基础物理学','javascript:change(\'A0501\');','基础物理学');
+d.add(46,44,'A0502.粒子物理学和场论','javascript:change(\'A0502\');','粒子物理学和场论');
+d.add(47,44,'A0503.核物理','javascript:change(\'A0503\');','核物理');
+d.add(48,44,'A0504.核技术及其应用','javascript:change(\'A0504\');','核技术及其应用');
+d.add(49,44,'A0505.粒子物理与核物理实验方法与技术','javascript:change(\'A0505\');','粒子物理与核物理实验方法与技术');
+d.add(50,44,'A0506.等离子体物理','javascript:change(\'A0506\');','等离子体物理');
+d.add(51,44,'A0507.同步辐射技术及其应用','javascript:change(\'A0507\');','同步辐射技术及其应用');
+d.add(52,1,'A06.NSFC-中物院联合基金','javascript:change(\'A06\');','NSFC-中物院联合基金');
+d.add(53,1,'A08.大科学装置联合基金','javascript:change(\'A08\');','大科学装置联合基金');
+d.add(54,53,'A0801.北京正负电子对撞机','javascript:change(\'A0801\');','北京正负电子对撞机');
+d.add(55,53,'A0802.上海光源','javascript:change(\'A0802\');','上海光源');
+d.add(56,53,'A0803.兰州重离子加速器','javascript:change(\'A0803\');','兰州重离子加速器');
+d.add(57,53,'A0804.合肥同步辐射','javascript:change(\'A0804\');','合肥同步辐射');
+d.add(58,53,'A0805.稳态强磁场','javascript:change(\'A0805\');','稳态强磁场');
+d.add(59,0,'B.化学综合处','javascript:change(\'B\');','化学综合处');
+d.add(60,59,'B01.无机化学','javascript:change(\'B01\');','无机化学');
+d.add(61,60,'B0101.无机合成和制备化学','javascript:change(\'B0101\');','无机合成和制备化学');
+d.add(62,60,'B0102.元素化学','javascript:change(\'B0102\');','元素化学');
+d.add(63,60,'B0103.配位化学','javascript:change(\'B0103\');','配位化学');
+d.add(64,60,'B0104.生物无机化学','javascript:change(\'B0104\');','生物无机化学');
+d.add(65,60,'B0105.固体无机化学','javascript:change(\'B0105\');','固体无机化学');
+d.add(66,60,'B0106.物理无机化学','javascript:change(\'B0106\');','物理无机化学');
+d.add(67,60,'B0107.无机材料化学','javascript:change(\'B0107\');','无机材料化学');
+d.add(68,60,'B0108.分离化学','javascript:change(\'B0108\');','分离化学');
+d.add(69,60,'B0109.核放射化学','javascript:change(\'B0109\');','核放射化学');
+d.add(70,60,'B0110.同位素化学','javascript:change(\'B0110\');','同位素化学');
+d.add(71,60,'B0111.无机纳米化学','javascript:change(\'B0111\');','无机纳米化学');
+d.add(72,60,'B0112.无机药物化学','javascript:change(\'B0112\');','无机药物化学');
+d.add(73,60,'B0113.无机超分子化学','javascript:change(\'B0113\');','无机超分子化学');
+d.add(74,60,'B0114.有机金属化学','javascript:change(\'B0114\');','有机金属化学');
+d.add(75,60,'B0115.原子簇化学','javascript:change(\'B0115\');','原子簇化学');
+d.add(76,60,'B0116.应用无机化学','javascript:change(\'B0116\');','应用无机化学');
+d.add(77,59,'B02.有机化学','javascript:change(\'B02\');','有机化学');
+d.add(78,77,'B0201.有机合成','javascript:change(\'B0201\');','有机合成');
+d.add(79,77,'B0202.金属有机化学','javascript:change(\'B0202\');','金属有机化学');
+d.add(80,77,'B0203.元素有机化学','javascript:change(\'B0203\');','元素有机化学');
+d.add(81,77,'B0204.天然有机化学','javascript:change(\'B0204\');','天然有机化学');
+d.add(82,77,'B0205.物理有机化学','javascript:change(\'B0205\');','物理有机化学');
+d.add(83,77,'B0206.药物化学','javascript:change(\'B0206\');','药物化学');
+d.add(84,77,'B0207.化学生物学与生物有机化学','javascript:change(\'B0207\');','化学生物学与生物有机化学');
+d.add(85,77,'B0208.有机分析','javascript:change(\'B0208\');','有机分析');
+d.add(86,77,'B0209.应用有机化学','javascript:change(\'B0209\');','应用有机化学');
+d.add(87,77,'B0210.绿色有机化学','javascript:change(\'B0210\');','绿色有机化学');
+d.add(88,77,'B0211.有机分子功能材料化学','javascript:change(\'B0211\');','有机分子功能材料化学');
+d.add(89,59,'B03.物理化学','javascript:change(\'B03\');','物理化学');
+d.add(90,89,'B0301.结构化学','javascript:change(\'B0301\');','结构化学');
+d.add(91,89,'B0302.理论和计算化学','javascript:change(\'B0302\');','理论和计算化学');
+d.add(92,89,'B0303.催化化学','javascript:change(\'B0303\');','催化化学');
+d.add(93,89,'B0304.化学动力学','javascript:change(\'B0304\');','化学动力学');
+d.add(94,89,'B0305.胶体与界面化学','javascript:change(\'B0305\');','胶体与界面化学');
+d.add(95,89,'B0306.电化学','javascript:change(\'B0306\');','电化学');
+d.add(96,89,'B0307.光化学和辐射化学','javascript:change(\'B0307\');','光化学和辐射化学');
+d.add(97,89,'B0308.热力学','javascript:change(\'B0308\');','热力学');
+d.add(98,89,'B0309.生物物理化学','javascript:change(\'B0309\');','生物物理化学');
+d.add(99,89,'B0310.化学信息学','javascript:change(\'B0310\');','化学信息学');
+d.add(100,59,'B04.高分子科学','javascript:change(\'B04\');','高分子科学');
+d.add(101,100,'B0401.高分子合成化学','javascript:change(\'B0401\');','高分子合成化学');
+d.add(102,100,'B0402.高分子化学反应','javascript:change(\'B0402\');','高分子化学反应');
+d.add(103,100,'B0403.功能与智能高分子','javascript:change(\'B0403\');','功能与智能高分子');
+d.add(104,100,'B0404.天然高分子与生物高分子','javascript:change(\'B0404\');','天然高分子与生物高分子');
+d.add(105,100,'B0405.高分子组装与超分子结构','javascript:change(\'B0405\');','高分子组装与超分子结构');
+d.add(106,100,'B0406.高分子物理与高分子物理化学','javascript:change(\'B0406\');','高分子物理与高分子物理化学');
+d.add(107,100,'B0407.应用高分子化学与物理','javascript:change(\'B0407\');','应用高分子化学与物理');
+d.add(108,59,'B05.分析化学','javascript:change(\'B05\');','分析化学');
+d.add(109,108,'B0501.色谱分析','javascript:change(\'B0501\');','色谱分析');
+d.add(110,108,'B0502.电化学分析','javascript:change(\'B0502\');','电化学分析');
+d.add(111,108,'B0503.光谱分析','javascript:change(\'B0503\');','光谱分析');
+d.add(112,108,'B0504.波谱分析与成像分析','javascript:change(\'B0504\');','波谱分析与成像分析');
+d.add(113,108,'B0505.质谱分析','javascript:change(\'B0505\');','质谱分析');
+d.add(114,108,'B0506.分析仪器与试剂','javascript:change(\'B0506\');','分析仪器与试剂');
+d.add(115,108,'B0507.热分析与能谱分析','javascript:change(\'B0507\');','热分析与能谱分析');
+d.add(116,108,'B0508.放射分析','javascript:change(\'B0508\');','放射分析');
+d.add(117,108,'B0509.生化分析及生物传感','javascript:change(\'B0509\');','生化分析及生物传感');
+d.add(118,108,'B0510.活体与复杂样品分析','javascript:change(\'B0510\');','活体与复杂样品分析');
+d.add(119,108,'B0511.样品前处理方法与技术','javascript:change(\'B0511\');','样品前处理方法与技术');
+d.add(120,108,'B0512.化学计量学与化学信息学','javascript:change(\'B0512\');','化学计量学与化学信息学');
+d.add(121,108,'B0513.表面、形态与形貌分析','javascript:change(\'B0513\');','表面、形态与形貌分析');
+d.add(122,59,'B06.化学工程及工业化学','javascript:change(\'B06\');','化学工程及工业化学');
+d.add(123,122,'B0601.化工热力学和基础数据','javascript:change(\'B0601\');','化工热力学和基础数据');
+d.add(124,122,'B0602.传递过程','javascript:change(\'B0602\');','传递过程');
+d.add(125,122,'B0603.分离过程','javascript:change(\'B0603\');','分离过程');
+d.add(126,122,'B0604.化学反应工程','javascript:change(\'B0604\');','化学反应工程');
+d.add(127,122,'B0605.化工系统工程','javascript:change(\'B0605\');','化工系统工程');
+d.add(128,122,'B0606.无机化工','javascript:change(\'B0606\');','无机化工');
+d.add(129,122,'B0607.有机化工','javascript:change(\'B0607\');','有机化工');
+d.add(130,122,'B0608.生物化工与食品化工','javascript:change(\'B0608\');','生物化工与食品化工');
+d.add(131,122,'B0609.能源化工','javascript:change(\'B0609\');','能源化工');
+d.add(132,122,'B0610.化工冶金','javascript:change(\'B0610\');','化工冶金');
+d.add(133,122,'B0611.环境化工','javascript:change(\'B0611\');','环境化工');
+d.add(134,122,'B0612.资源化工','javascript:change(\'B0612\');','资源化工');
+d.add(135,59,'B07.环境化学','javascript:change(\'B07\');','环境化学');
+d.add(136,135,'B0701.环境分析化学','javascript:change(\'B0701\');','环境分析化学');
+d.add(137,135,'B0702.环境污染化学','javascript:change(\'B0702\');','环境污染化学');
+d.add(138,135,'B0703.污染控制化学','javascript:change(\'B0703\');','污染控制化学');
+d.add(139,135,'B0704.污染生态化学','javascript:change(\'B0704\');','污染生态化学');
+d.add(140,135,'B0705.理论环境化学','javascript:change(\'B0705\');','理论环境化学');
+d.add(141,135,'B0706.区域环境化学','javascript:change(\'B0706\');','区域环境化学');
+d.add(142,135,'B0707.化学环境污染与健康','javascript:change(\'B0707\');','化学环境污染与健康');
+d.add(143,0,'C.生命综合处','javascript:change(\'C\');','生命综合处');
+d.add(144,143,'C01.微生物学','javascript:change(\'C01\');','微生物学');
+d.add(145,144,'C0101.微生物资源与分类学','javascript:change(\'C0101\');','微生物资源与分类学');
+d.add(146,144,'C0102.微生物生理与生物化学','javascript:change(\'C0102\');','微生物生理与生物化学');
+d.add(147,144,'C0103.微生物遗传育种学','javascript:change(\'C0103\');','微生物遗传育种学');
+d.add(148,144,'C0104.微生物学研究的新技术与新方法','javascript:change(\'C0104\');','微生物学研究的新技术与新方法');
+d.add(149,144,'C0105.环境微生物学','javascript:change(\'C0105\');','环境微生物学');
+d.add(150,144,'C0106.病原细菌与放线菌生物学','javascript:change(\'C0106\');','病原细菌与放线菌生物学');
+d.add(151,144,'C0107.病原真菌学','javascript:change(\'C0107\');','病原真菌学');
+d.add(152,144,'C0108.病毒学','javascript:change(\'C0108\');','病毒学');
+d.add(153,144,'C0109.支原体、立克次体与衣原体','javascript:change(\'C0109\');','支原体、立克次体与衣原体');
+d.add(154,143,'C02.植物学','javascript:change(\'C02\');','植物学');
+d.add(155,154,'C0201.植物结构学','javascript:change(\'C0201\');','植物结构学');
+d.add(156,154,'C0202.植物分类学 ','javascript:change(\'C0202\');','植物分类学 ');
+d.add(157,154,'C0203.植物进化生物学 ','javascript:change(\'C0203\');','植物进化生物学 ');
+d.add(158,154,'C0204.植物生理与生化 ','javascript:change(\'C0204\');','植物生理与生化 ');
+d.add(159,154,'C0205.植物生殖生物学','javascript:change(\'C0205\');','植物生殖生物学');
+d.add(160,154,'C0206.植物资源学','javascript:change(\'C0206\');','植物资源学');
+d.add(161,154,'C0207.植物学研究的新技术、新方法','javascript:change(\'C0207\');','植物学研究的新技术、新方法');
+d.add(162,143,'C03.生态学','javascript:change(\'C03\');','生态学');
+d.add(163,162,'C0301.分子与进化生态学','javascript:change(\'C0301\');','分子与进化生态学');
+d.add(164,162,'C0302.行为生态学','javascript:change(\'C0302\');','行为生态学');
+d.add(165,162,'C0303.生理生态学','javascript:change(\'C0303\');','生理生态学');
+d.add(166,162,'C0304.种群生态学','javascript:change(\'C0304\');','种群生态学');
+d.add(167,162,'C0305.群落生态学','javascript:change(\'C0305\');','群落生态学');
+d.add(168,162,'C0306.生态系统生态学','javascript:change(\'C0306\');','生态系统生态学');
+d.add(169,162,'C0307.景观与区域生态学','javascript:change(\'C0307\');','景观与区域生态学');
+d.add(170,162,'C0308.全球变化生态学','javascript:change(\'C0308\');','全球变化生态学');
+d.add(171,162,'C0309.微生物生态学','javascript:change(\'C0309\');','微生物生态学');
+d.add(172,162,'C0310.污染生态学','javascript:change(\'C0310\');','污染生态学');
+d.add(173,162,'C0311.土壤生态学','javascript:change(\'C0311\');','土壤生态学');
+d.add(174,162,'C0312.保护生物学与恢复生态学','javascript:change(\'C0312\');','保护生物学与恢复生态学');
+d.add(175,162,'C0313.生态安全评价','javascript:change(\'C0313\');','生态安全评价');
+d.add(176,143,'C04.动物学','javascript:change(\'C04\');','动物学');
+d.add(177,176,'C0401.动物形态学及胚胎学','javascript:change(\'C0401\');','动物形态学及胚胎学');
+d.add(178,176,'C0402.动物系统及分类学','javascript:change(\'C0402\');','动物系统及分类学');
+d.add(179,176,'C0403.动物生理及行为学','javascript:change(\'C0403\');','动物生理及行为学');
+d.add(180,176,'C0404.动物资源与保护','javascript:change(\'C0404\');','动物资源与保护');
+d.add(181,176,'C0405.昆虫学','javascript:change(\'C0405\');','昆虫学');
+d.add(182,176,'C0406.实验动物学','javascript:change(\'C0406\');','实验动物学');
+d.add(183,143,'C05.生物物理、生物化学与分子生物学','javascript:change(\'C05\');','生物物理、生物化学与分子生物学');
+d.add(184,183,'C0501.生物大分子结构与功能','javascript:change(\'C0501\');','生物大分子结构与功能');
+d.add(185,183,'C0502.生物化学','javascript:change(\'C0502\');','生物化学');
+d.add(186,183,'C0503.蛋白质组学','javascript:change(\'C0503\');','蛋白质组学');
+d.add(187,183,'C0504.膜生物化学与膜生物物理学','javascript:change(\'C0504\');','膜生物化学与膜生物物理学');
+d.add(188,183,'C0505.系统生物学','javascript:change(\'C0505\');','系统生物学');
+d.add(189,183,'C0506.环境生物物理','javascript:change(\'C0506\');','环境生物物理');
+d.add(190,183,'C0507.空间生物学','javascript:change(\'C0507\');','空间生物学');
+d.add(191,183,'C0508.生物物理、生物化学与分子生物学研究的新方法与新技术','javascript:change(\'C0508\');','生物物理、生物化学与分子生物学研究的新方法与新技术');
+d.add(192,143,'C06.遗传学与生物信息学','javascript:change(\'C06\');','遗传学与生物信息学');
+d.add(193,192,'C0601.植物遗传学','javascript:change(\'C0601\');','植物遗传学');
+d.add(194,192,'C0602.动物遗传学','javascript:change(\'C0602\');','动物遗传学');
+d.add(195,192,'C0603.微生物遗传学','javascript:change(\'C0603\');','微生物遗传学');
+d.add(196,192,'C0604.人类遗传学','javascript:change(\'C0604\');','人类遗传学');
+d.add(197,192,'C0605.基因组学','javascript:change(\'C0605\');','基因组学');
+d.add(198,192,'C0606.基因表达调控与表观遗传学','javascript:change(\'C0606\');','基因表达调控与表观遗传学');
+d.add(199,192,'C0607.生物信息学','javascript:change(\'C0607\');','生物信息学');
+d.add(200,192,'C0608.遗传学研究新技术与新方法','javascript:change(\'C0608\');','遗传学研究新技术与新方法');
+d.add(201,143,'C07.细胞生物学','javascript:change(\'C07\');','细胞生物学');
+d.add(202,201,'C0701.细胞、亚细胞结构与功能','javascript:change(\'C0701\');','细胞、亚细胞结构与功能');
+d.add(203,201,'C0702.细胞生长与分裂','javascript:change(\'C0702\');','细胞生长与分裂');
+d.add(204,201,'C0703.细胞周期与调控','javascript:change(\'C0703\');','细胞周期与调控');
+d.add(205,201,'C0704.细胞增殖、生长与分化','javascript:change(\'C0704\');','细胞增殖、生长与分化');
+d.add(206,201,'C0705.细胞衰老','javascript:change(\'C0705\');','细胞衰老');
+d.add(207,201,'C0706.细胞死亡','javascript:change(\'C0706\');','细胞死亡');
+d.add(208,201,'C0707.细胞运动','javascript:change(\'C0707\');','细胞运动');
+d.add(209,201,'C0708.细胞外基质','javascript:change(\'C0708\');','细胞外基质');
+d.add(210,201,'C0709.细胞信号转导','javascript:change(\'C0709\');','细胞信号转导');
+d.add(211,201,'C0710.细胞物质运输','javascript:change(\'C0710\');','细胞物质运输');
+d.add(212,201,'C0711.细胞呼吸与代谢','javascript:change(\'C0711\');','细胞呼吸与代谢');
+d.add(213,201,'C0712.细胞生物学研究中的新方法','javascript:change(\'C0712\');','细胞生物学研究中的新方法');
+d.add(214,143,'C08.免疫学','javascript:change(\'C08\');','免疫学');
+d.add(215,214,'C0801.免疫生物学','javascript:change(\'C0801\');','免疫生物学');
+d.add(216,214,'C0802.免疫遗传学','javascript:change(\'C0802\');','免疫遗传学');
+d.add(217,214,'C0803.生殖免疫学','javascript:change(\'C0803\');','生殖免疫学');
+d.add(218,214,'C0804.黏膜免疫学','javascript:change(\'C0804\');','黏膜免疫学');
+d.add(219,214,'C0805.疫苗学','javascript:change(\'C0805\');','疫苗学');
+d.add(220,214,'C0806.抗体工程学','javascript:change(\'C0806\');','抗体工程学');
+d.add(221,214,'C0807.免疫学研究新技术与新方法','javascript:change(\'C0807\');','免疫学研究新技术与新方法');
+d.add(222,143,'C09.神经科学、认知科学与心理学','javascript:change(\'C09\');','神经科学、认知科学与心理学');
+d.add(223,222,'C0901.心理学','javascript:change(\'C0901\');','心理学');
+d.add(224,222,'C0902.神经生物学','javascript:change(\'C0902\');','神经生物学');
+d.add(225,222,'C0903.认知科学','javascript:change(\'C0903\');','认知科学');
+d.add(226,143,'C10.生物力学与组织工程学','javascript:change(\'C10\');','生物力学与组织工程学');
+d.add(227,226,'C1001.生物力学与生物流变学','javascript:change(\'C1001\');','生物力学与生物流变学');
+d.add(228,226,'C1002.生物材料','javascript:change(\'C1002\');','生物材料');
+d.add(229,226,'C1003.组织工程学','javascript:change(\'C1003\');','组织工程学');
+d.add(230,226,'C1004.生物电子学','javascript:change(\'C1004\');','生物电子学');
+d.add(231,226,'C1005.生物图像与成像','javascript:change(\'C1005\');','生物图像与成像');
+d.add(232,226,'C1006.仿生学','javascript:change(\'C1006\');','仿生学');
+d.add(233,226,'C1007.纳米生物学','javascript:change(\'C1007\');','纳米生物学');
+d.add(234,226,'C1008.生物系统工程研究的新技术与新方法','javascript:change(\'C1008\');','生物系统工程研究的新技术与新方法');
+d.add(235,143,'C11.生理学与整合生物学','javascript:change(\'C11\');','生理学与整合生物学');
+d.add(236,235,'C1101.细胞生理学','javascript:change(\'C1101\');','细胞生理学');
+d.add(237,235,'C1102.系统生理学','javascript:change(\'C1102\');','系统生理学');
+d.add(238,235,'C1103.整合生理学','javascript:change(\'C1103\');','整合生理学');
+d.add(239,235,'C1104.衰老与生物节律','javascript:change(\'C1104\');','衰老与生物节律');
+d.add(240,235,'C1105.营养与代谢生理学','javascript:change(\'C1105\');','营养与代谢生理学');
+d.add(241,235,'C1106.运动生理学','javascript:change(\'C1106\');','运动生理学');
+d.add(242,235,'C1107.特殊环境生理学','javascript:change(\'C1107\');','特殊环境生理学');
+d.add(243,235,'C1108.比较生理学','javascript:change(\'C1108\');','比较生理学');
+d.add(244,235,'C1109.整合生物学','javascript:change(\'C1109\');','整合生物学');
+d.add(245,235,'C1110.人体解剖学','javascript:change(\'C1110\');','人体解剖学');
+d.add(246,235,'C1111.人体组织与胚胎学','javascript:change(\'C1111\');','人体组织与胚胎学');
+d.add(247,143,'C12.发育生物学与生殖生物学','javascript:change(\'C12\');','发育生物学与生殖生物学');
+d.add(248,247,'C1201.发育生物学','javascript:change(\'C1201\');','发育生物学');
+d.add(249,247,'C1202.生殖生物学','javascript:change(\'C1202\');','生殖生物学');
+d.add(250,143,'C13.农学基础与作物学','javascript:change(\'C13\');','农学基础与作物学');
+d.add(251,250,'C1301.农学基础','javascript:change(\'C1301\');','农学基础');
+d.add(252,250,'C1302.作物生理学','javascript:change(\'C1302\');','作物生理学');
+d.add(253,250,'C1303.作物栽培与耕作学','javascript:change(\'C1303\');','作物栽培与耕作学');
+d.add(254,250,'C1304.作物种质资源与遗传育种学','javascript:change(\'C1304\');','作物种质资源与遗传育种学');
+d.add(255,250,'C1305.作物杂种优势及其利用','javascript:change(\'C1305\');','作物杂种优势及其利用');
+d.add(256,250,'C1306.作物分子育种','javascript:change(\'C1306\');','作物分子育种');
+d.add(257,250,'C1307.作物种子学','javascript:change(\'C1307\');','作物种子学');
+d.add(258,143,'C14.植物保护学','javascript:change(\'C14\');','植物保护学');
+d.add(259,258,'C1401.植物病理学','javascript:change(\'C1401\');','植物病理学');
+d.add(260,258,'C1402.农业昆虫学','javascript:change(\'C1402\');','农业昆虫学');
+d.add(261,258,'C1403.农田草害','javascript:change(\'C1403\');','农田草害');
+d.add(262,258,'C1404.农田鼠害及其他有害生物','javascript:change(\'C1404\');','农田鼠害及其他有害生物');
+d.add(263,258,'C1405.植物化学保护','javascript:change(\'C1405\');','植物化学保护');
+d.add(264,258,'C1406.生物防治','javascript:change(\'C1406\');','生物防治');
+d.add(265,258,'C1407.农业有害生物检疫与入侵生物学','javascript:change(\'C1407\');','农业有害生物检疫与入侵生物学');
+d.add(266,258,'C1408.植物保护生物技术','javascript:change(\'C1408\');','植物保护生物技术');
+d.add(267,143,'C15.园艺学与植物营养学','javascript:change(\'C15\');','园艺学与植物营养学');
+d.add(268,267,'C1501.果树学','javascript:change(\'C1501\');','果树学');
+d.add(269,267,'C1502.蔬菜学与瓜果学','javascript:change(\'C1502\');','蔬菜学与瓜果学');
+d.add(270,267,'C1503.观赏园艺学','javascript:change(\'C1503\');','观赏园艺学');
+d.add(271,267,'C1504.设施园艺学','javascript:change(\'C1504\');','设施园艺学');
+d.add(272,267,'C1505.园艺作物采后生物学','javascript:change(\'C1505\');','园艺作物采后生物学');
+d.add(273,267,'C1506.食用真菌学','javascript:change(\'C1506\');','食用真菌学');
+d.add(274,267,'C1507.植物营养学','javascript:change(\'C1507\');','植物营养学');
+d.add(275,143,'C16.林学','javascript:change(\'C16\');','林学');
+d.add(276,275,'C1601.森林资源学','javascript:change(\'C1601\');','森林资源学');
+d.add(277,275,'C1602.森林资源信息学','javascript:change(\'C1602\');','森林资源信息学');
+d.add(278,275,'C1603.木材物理学','javascript:change(\'C1603\');','木材物理学');
+d.add(279,275,'C1604.林产化学','javascript:change(\'C1604\');','林产化学');
+d.add(280,275,'C1605.森林生物学','javascript:change(\'C1605\');','森林生物学');
+d.add(281,275,'C1606.森林土壤学','javascript:change(\'C1606\');','森林土壤学');
+d.add(282,275,'C1607.森林培育学','javascript:change(\'C1607\');','森林培育学');
+d.add(283,275,'C1608.森林经理学','javascript:change(\'C1608\');','森林经理学');
+d.add(284,275,'C1609.森林健康','javascript:change(\'C1609\');','森林健康');
+d.add(285,275,'C1610.林木遗传育种学','javascript:change(\'C1610\');','林木遗传育种学');
+d.add(286,275,'C1611.经济林学','javascript:change(\'C1611\');','经济林学');
+d.add(287,275,'C1612.园林学','javascript:change(\'C1612\');','园林学');
+d.add(288,275,'C1613.荒漠化与水土保持','javascript:change(\'C1613\');','荒漠化与水土保持');
+d.add(289,275,'C1614.林业研究的新技术与新方法','javascript:change(\'C1614\');','林业研究的新技术与新方法');
+d.add(290,143,'C17.畜牧学与草地科学','javascript:change(\'C17\');','畜牧学与草地科学');
+d.add(291,290,'C1701.畜牧学','javascript:change(\'C1701\');','畜牧学');
+d.add(292,290,'C1702.草地科学','javascript:change(\'C1702\');','草地科学');
+d.add(293,290,'C1703.养蚕学','javascript:change(\'C1703\');','养蚕学');
+d.add(294,290,'C1704.养蜂学','javascript:change(\'C1704\');','养蜂学');
+d.add(295,143,'C18.兽医学','javascript:change(\'C18\');','兽医学');
+d.add(296,295,'C1801.基础兽医学','javascript:change(\'C1801\');','基础兽医学');
+d.add(297,295,'C1802.动物病理学','javascript:change(\'C1802\');','动物病理学');
+d.add(298,295,'C1803.兽医免疫学','javascript:change(\'C1803\');','兽医免疫学');
+d.add(299,295,'C1804.兽医寄生虫学','javascript:change(\'C1804\');','兽医寄生虫学');
+d.add(300,295,'C1805.兽医传染病学','javascript:change(\'C1805\');','兽医传染病学');
+d.add(301,295,'C1806.中兽医学','javascript:change(\'C1806\');','中兽医学');
+d.add(302,295,'C1807.兽医药理学与毒理学','javascript:change(\'C1807\');','兽医药理学与毒理学');
+d.add(303,295,'C1808.临床兽医学','javascript:change(\'C1808\');','临床兽医学');
+d.add(304,143,'C19.水产学','javascript:change(\'C19\');','水产学');
+d.add(305,304,'C1901.水产基础生物学','javascript:change(\'C1901\');','水产基础生物学');
+d.add(306,304,'C1902.水产生物遗传育种学','javascript:change(\'C1902\');','水产生物遗传育种学');
+d.add(307,304,'C1903.水产资源与保护学','javascript:change(\'C1903\');','水产资源与保护学');
+d.add(308,304,'C1904.水产生物营养与饲料学','javascript:change(\'C1904\');','水产生物营养与饲料学');
+d.add(309,304,'C1905.水产养殖学','javascript:change(\'C1905\');','水产养殖学');
+d.add(310,304,'C1906.水产生物免疫学与病害控制','javascript:change(\'C1906\');','水产生物免疫学与病害控制');
+d.add(311,304,'C1907.养殖与渔业工程学','javascript:change(\'C1907\');','养殖与渔业工程学');
+d.add(312,304,'C1908.水产生物研究的新技术和新方法','javascript:change(\'C1908\');','水产生物研究的新技术和新方法');
+d.add(313,143,'C20.食品科学','javascript:change(\'C20\');','食品科学');
+d.add(314,313,'C2001.食品科学基础','javascript:change(\'C2001\');','食品科学基础');
+d.add(315,313,'C2002.食品加工学基础','javascript:change(\'C2002\');','食品加工学基础');
+d.add(316,313,'C2003.食品加工技术','javascript:change(\'C2003\');','食品加工技术');
+d.add(317,0,'D.地球综合处','javascript:change(\'D\');','地球综合处');
+d.add(318,317,'D01.地理学','javascript:change(\'D01\');','地理学');
+d.add(319,318,'D0101.自然地理学','javascript:change(\'D0101\');','自然地理学');
+d.add(320,318,'D0102.人文地理学','javascript:change(\'D0102\');','人文地理学');
+d.add(321,318,'D0103.景观地理学','javascript:change(\'D0103\');','景观地理学');
+d.add(322,318,'D0104.环境变化与预测','javascript:change(\'D0104\');','环境变化与预测');
+d.add(323,318,'D0105.土壤学','javascript:change(\'D0105\');','土壤学');
+d.add(324,318,'D0106.遥感机理与方法','javascript:change(\'D0106\');','遥感机理与方法');
+d.add(325,318,'D0107.地理信息系统','javascript:change(\'D0107\');','地理信息系统');
+d.add(326,318,'D0108.测量与地图学','javascript:change(\'D0108\');','测量与地图学');
+d.add(327,318,'D0109.污染物行为过程及其环境效应','javascript:change(\'D0109\');','污染物行为过程及其环境效应');
+d.add(328,318,'D0110.区域环境质量与安全','javascript:change(\'D0110\');','区域环境质量与安全');
+d.add(329,318,'D0111.自然资源管理','javascript:change(\'D0111\');','自然资源管理');
+d.add(330,318,'D0112.区域可持续发展','javascript:change(\'D0112\');','区域可持续发展');
+d.add(331,317,'D02.地质学','javascript:change(\'D02\');','地质学');
+d.add(332,331,'D0201.古生物学和古生态学','javascript:change(\'D0201\');','古生物学和古生态学');
+d.add(333,331,'D0202.地层学','javascript:change(\'D0202\');','地层学');
+d.add(334,331,'D0203.矿物学(含矿物物理学）','javascript:change(\'D0203\');','矿物学(含矿物物理学）');
+d.add(335,331,'D0204.岩石学','javascript:change(\'D0204\');','岩石学');
+d.add(336,331,'D0205.矿床学','javascript:change(\'D0205\');','矿床学');
+d.add(337,331,'D0206.沉积学和盆地动力学','javascript:change(\'D0206\');','沉积学和盆地动力学');
+d.add(338,331,'D0207.石油、天然气地质学','javascript:change(\'D0207\');','石油、天然气地质学');
+d.add(339,331,'D0208.煤地质学','javascript:change(\'D0208\');','煤地质学');
+d.add(340,331,'D0209.第四纪地质学','javascript:change(\'D0209\');','第四纪地质学');
+d.add(341,331,'D0210.前寒武纪地质学','javascript:change(\'D0210\');','前寒武纪地质学');
+d.add(342,331,'D0211.构造地质学与活动构造','javascript:change(\'D0211\');','构造地质学与活动构造');
+d.add(343,331,'D0212.大地构造学','javascript:change(\'D0212\');','大地构造学');
+d.add(344,331,'D0213.水文地质学(含地热地质学)','javascript:change(\'D0213\');','水文地质学(含地热地质学)');
+d.add(345,331,'D0214.工程地质学','javascript:change(\'D0214\');','工程地质学');
+d.add(346,331,'D0215.数学地质学与遥感地质学','javascript:change(\'D0215\');','数学地质学与遥感地质学');
+d.add(347,331,'D0216.火山学','javascript:change(\'D0216\');','火山学');
+d.add(348,331,'D0217.生物地质学','javascript:change(\'D0217\');','生物地质学');
+d.add(349,331,'D0218.环境地质学和灾害地质学','javascript:change(\'D0218\');','环境地质学和灾害地质学');
+d.add(350,317,'D03.地球化学','javascript:change(\'D03\');','地球化学');
+d.add(351,350,'D0301.同位素地球化学','javascript:change(\'D0301\');','同位素地球化学');
+d.add(352,350,'D0302.微量元素地球化学','javascript:change(\'D0302\');','微量元素地球化学');
+d.add(353,350,'D0303.岩石地球化学','javascript:change(\'D0303\');','岩石地球化学');
+d.add(354,350,'D0304.矿床地球化学和有机地球化学','javascript:change(\'D0304\');','矿床地球化学和有机地球化学');
+d.add(355,350,'D0305.同位素和化学年代学','javascript:change(\'D0305\');','同位素和化学年代学');
+d.add(356,350,'D0306.实验地球化学和计算地球化学','javascript:change(\'D0306\');','实验地球化学和计算地球化学');
+d.add(357,350,'D0307.宇宙化学与比较行星学','javascript:change(\'D0307\');','宇宙化学与比较行星学');
+d.add(358,350,'D0308.生物地球化学','javascript:change(\'D0308\');','生物地球化学');
+d.add(359,350,'D0309.环境地球化学','javascript:change(\'D0309\');','环境地球化学');
+d.add(360,317,'D04.地球物理学和空间物理学','javascript:change(\'D04\');','地球物理学和空间物理学');
+d.add(361,360,'D0401.大地测量学','javascript:change(\'D0401\');','大地测量学');
+d.add(362,360,'D0402.地震学','javascript:change(\'D0402\');','地震学');
+d.add(363,360,'D0403.地磁学','javascript:change(\'D0403\');','地磁学');
+d.add(364,360,'D0404.地球电磁学','javascript:change(\'D0404\');','地球电磁学');
+d.add(365,360,'D0405.重力学','javascript:change(\'D0405\');','重力学');
+d.add(366,360,'D0406.地热学','javascript:change(\'D0406\');','地热学');
+d.add(367,360,'D0407.地球内部物理学','javascript:change(\'D0407\');','地球内部物理学');
+d.add(368,360,'D0408.地球动力学','javascript:change(\'D0408\');','地球动力学');
+d.add(369,360,'D0409.应用地球物理学','javascript:change(\'D0409\');','应用地球物理学');
+d.add(370,360,'D0410.空间物理','javascript:change(\'D0410\');','空间物理');
+d.add(371,360,'D0411.地球物理实验与仪器','javascript:change(\'D0411\');','地球物理实验与仪器');
+d.add(372,360,'D0412.空间环境和空间天气','javascript:change(\'D0412\');','空间环境和空间天气');
+d.add(373,317,'D05.大气科学','javascript:change(\'D05\');','大气科学');
+d.add(374,373,'D0501.对流层大气物理学','javascript:change(\'D0501\');','对流层大气物理学');
+d.add(375,373,'D0502.边界层大气物理学和大气湍流','javascript:change(\'D0502\');','边界层大气物理学和大气湍流');
+d.add(376,373,'D0503.大气遥感和大气探测','javascript:change(\'D0503\');','大气遥感和大气探测');
+d.add(377,373,'D0504.中层与行星大气物理学','javascript:change(\'D0504\');','中层与行星大气物理学');
+d.add(378,373,'D0505.天气学','javascript:change(\'D0505\');','天气学');
+d.add(379,373,'D0506.大气动力学','javascript:change(\'D0506\');','大气动力学');
+d.add(380,373,'D0507.气候学与气候系统','javascript:change(\'D0507\');','气候学与气候系统');
+d.add(381,373,'D0508.数值预报与数值模拟','javascript:change(\'D0508\');','数值预报与数值模拟');
+d.add(382,373,'D0509.应用气象学','javascript:change(\'D0509\');','应用气象学');
+d.add(383,373,'D0510.大气化学','javascript:change(\'D0510\');','大气化学');
+d.add(384,373,'D0511.云雾物理化学与人工影响天气','javascript:change(\'D0511\');','云雾物理化学与人工影响天气');
+d.add(385,373,'D0512.大气环境与全球气候变化','javascript:change(\'D0512\');','大气环境与全球气候变化');
+d.add(386,373,'D0513.气象观测原理、方法及数据分析','javascript:change(\'D0513\');','气象观测原理、方法及数据分析');
+d.add(387,317,'D06.海洋科学','javascript:change(\'D06\');','海洋科学');
+d.add(388,387,'D0601.物理海洋学','javascript:change(\'D0601\');','物理海洋学');
+d.add(389,387,'D0602.海洋物理学','javascript:change(\'D0602\');','海洋物理学');
+d.add(390,387,'D0603.海洋地质学','javascript:change(\'D0603\');','海洋地质学');
+d.add(391,387,'D0604.海洋化学','javascript:change(\'D0604\');','海洋化学');
+d.add(392,387,'D0605.河口海岸学','javascript:change(\'D0605\');','河口海岸学');
+d.add(393,387,'D0606.工程海洋学','javascript:change(\'D0606\');','工程海洋学');
+d.add(394,387,'D0607.海洋监测、调查技术','javascript:change(\'D0607\');','海洋监测、调查技术');
+d.add(395,387,'D0608.海洋环境科学','javascript:change(\'D0608\');','海洋环境科学');
+d.add(396,387,'D0609.生物海洋学与海洋生物资源','javascript:change(\'D0609\');','生物海洋学与海洋生物资源');
+d.add(397,387,'D0610.海洋遥感','javascript:change(\'D0610\');','海洋遥感');
+d.add(398,387,'D0611.极地科学','javascript:change(\'D0611\');','极地科学');
+d.add(399,317,'D07.石油化工联合基金','javascript:change(\'D07\');','石油化工联合基金');
+d.add(400,0,'E.工材综合处','javascript:change(\'E\');','工材综合处');
+d.add(401,400,'E01.金属材料','javascript:change(\'E01\');','金属材料');
+d.add(402,401,'E0101.金属结构材料','javascript:change(\'E0101\');','金属结构材料');
+d.add(403,401,'E0102.金属基复合材料','javascript:change(\'E0102\');','金属基复合材料');
+d.add(404,401,'E0103.金属非晶态、准晶和纳米晶材料','javascript:change(\'E0103\');','金属非晶态、准晶和纳米晶材料');
+d.add(405,401,'E0104.极端条件下使用的金属材料','javascript:change(\'E0104\');','极端条件下使用的金属材料');
+d.add(406,401,'E0105.金属功能材料','javascript:change(\'E0105\');','金属功能材料');
+d.add(407,401,'E0106.金属材料的合金相、相变及合金设计','javascript:change(\'E0106\');','金属材料的合金相、相变及合金设计');
+d.add(408,401,'E0107.金属材料的微观结构','javascript:change(\'E0107\');','金属材料的微观结构');
+d.add(409,401,'E0108.金属材料的力学行为','javascript:change(\'E0108\');','金属材料的力学行为');
+d.add(410,401,'E0109.金属材料的凝固与结晶学','javascript:change(\'E0109\');','金属材料的凝固与结晶学');
+d.add(411,401,'E0110.金属材料表面科学与工程','javascript:change(\'E0110\');','金属材料表面科学与工程');
+d.add(412,401,'E0111.金属材料的腐蚀与防护','javascript:change(\'E0111\');','金属材料的腐蚀与防护');
+d.add(413,401,'E0112.金属材料的磨损与磨蚀','javascript:change(\'E0112\');','金属材料的磨损与磨蚀');
+d.add(414,401,'E0113.金属材料的制备科学与跨学科应用基础','javascript:change(\'E0113\');','金属材料的制备科学与跨学科应用基础');
+d.add(415,400,'E02.无机非金属材料','javascript:change(\'E02\');','无机非金属材料');
+d.add(416,415,'E0201.人工晶体','javascript:change(\'E0201\');','人工晶体');
+d.add(417,415,'E0202.玻璃材料','javascript:change(\'E0202\');','玻璃材料');
+d.add(418,415,'E0203.结构陶瓷','javascript:change(\'E0203\');','结构陶瓷');
+d.add(419,415,'E0204.功能陶瓷','javascript:change(\'E0204\');','功能陶瓷');
+d.add(420,415,'E0205.水泥与耐火材料','javascript:change(\'E0205\');','水泥与耐火材料');
+d.add(421,415,'E0206.碳素材料与超硬材料','javascript:change(\'E0206\');','碳素材料与超硬材料');
+d.add(422,415,'E0207.无机非金属类光电信息与功能材料','javascript:change(\'E0207\');','无机非金属类光电信息与功能材料');
+d.add(423,415,'E0208.无机非金属基复合材料','javascript:change(\'E0208\');','无机非金属基复合材料');
+d.add(424,415,'E0209.半导体材料','javascript:change(\'E0209\');','半导体材料');
+d.add(425,415,'E0210.无机非金属类电介质与电解质材料','javascript:change(\'E0210\');','无机非金属类电介质与电解质材料');
+d.add(426,415,'E0211.无机非金属类高温超导与磁性材料','javascript:change(\'E0211\');','无机非金属类高温超导与磁性材料');
+d.add(427,415,'E0212.古陶瓷与传统陶瓷','javascript:change(\'E0212\');','古陶瓷与传统陶瓷');
+d.add(428,415,'E0213.其他无机非金属材料','javascript:change(\'E0213\');','其他无机非金属材料');
+d.add(429,400,'E03.有机高分子材料','javascript:change(\'E03\');','有机高分子材料');
+d.add(430,429,'E0301.塑料','javascript:change(\'E0301\');','塑料');
+d.add(431,429,'E0302.橡胶及弹性体','javascript:change(\'E0302\');','橡胶及弹性体');
+d.add(432,429,'E0303.纤维','javascript:change(\'E0303\');','纤维');
+d.add(433,429,'E0304.涂料','javascript:change(\'E0304\');','涂料');
+d.add(434,429,'E0305.黏合剂','javascript:change(\'E0305\');','黏合剂');
+d.add(435,429,'E0306.高分子助剂','javascript:change(\'E0306\');','高分子助剂');
+d.add(436,429,'E0307.聚合物共混与复合材料','javascript:change(\'E0307\');','聚合物共混与复合材料');
+d.add(437,429,'E0308.特殊与极端环境下的高分子材料','javascript:change(\'E0308\');','特殊与极端环境下的高分子材料');
+d.add(438,429,'E0309.有机高分子功能材料','javascript:change(\'E0309\');','有机高分子功能材料');
+d.add(439,429,'E0310.生物医用高分子材料','javascript:change(\'E0310\');','生物医用高分子材料');
+d.add(440,429,'E0311.智能材料','javascript:change(\'E0311\');','智能材料');
+d.add(441,429,'E0312.仿生材料','javascript:change(\'E0312\');','仿生材料');
+d.add(442,429,'E0313.高分子材料与环境','javascript:change(\'E0313\');','高分子材料与环境');
+d.add(443,429,'E0314.高分子材料结构与性能','javascript:change(\'E0314\');','高分子材料结构与性能');
+d.add(444,429,'E0315.高分子材料的加工与成型','javascript:change(\'E0315\');','高分子材料的加工与成型');
+d.add(445,400,'E04.冶金与矿业','javascript:change(\'E04\');','冶金与矿业');
+d.add(446,445,'E0401.金属与非金属地下开采','javascript:change(\'E0401\');','金属与非金属地下开采');
+d.add(447,445,'E0402.煤炭地下开采','javascript:change(\'E0402\');','煤炭地下开采');
+d.add(448,445,'E0403.石油天然气开采','javascript:change(\'E0403\');','石油天然气开采');
+d.add(449,445,'E0404.化石能源储存与输送','javascript:change(\'E0404\');','化石能源储存与输送');
+d.add(450,445,'E0405.露天开采与边坡工程','javascript:change(\'E0405\');','露天开采与边坡工程');
+d.add(451,445,'E0406.海洋、空间及其他矿物资源开采与利用','javascript:change(\'E0406\');','海洋、空间及其他矿物资源开采与利用');
+d.add(452,445,'E0407.钻井工程与地热开采','javascript:change(\'E0407\');','钻井工程与地热开采');
+d.add(453,445,'E0408.地下空间工程','javascript:change(\'E0408\');','地下空间工程');
+d.add(454,445,'E0409.矿山岩体力学与岩层控制','javascript:change(\'E0409\');','矿山岩体力学与岩层控制');
+d.add(455,445,'E0410.安全科学与工程','javascript:change(\'E0410\');','安全科学与工程');
+d.add(456,445,'E0411.矿物工程与物质分离科学','javascript:change(\'E0411\');','矿物工程与物质分离科学');
+d.add(457,445,'E0412.冶金物理化学与冶金原理','javascript:change(\'E0412\');','冶金物理化学与冶金原理');
+d.add(458,445,'E0413.冶金化工与冶金反应工程学','javascript:change(\'E0413\');','冶金化工与冶金反应工程学');
+d.add(459,445,'E0414.钢铁冶金','javascript:change(\'E0414\');','钢铁冶金');
+d.add(460,445,'E0415.有色金属冶金','javascript:change(\'E0415\');','有色金属冶金');
+d.add(461,445,'E0416.材料冶金过程工程','javascript:change(\'E0416\');','材料冶金过程工程');
+d.add(462,445,'E0417.粉末冶金与粉体工程','javascript:change(\'E0417\');','粉末冶金与粉体工程');
+d.add(463,445,'E0418.特殊冶金、外场冶金与冶金新理论、新方法','javascript:change(\'E0418\');','特殊冶金、外场冶金与冶金新理论、新方法');
+d.add(464,445,'E0419.资源循环科学','javascript:change(\'E0419\');','资源循环科学');
+d.add(465,445,'E0420.矿冶生态与环境工程','javascript:change(\'E0420\');','矿冶生态与环境工程');
+d.add(466,445,'E0421.矿冶装备工艺原理','javascript:change(\'E0421\');','矿冶装备工艺原理');
+d.add(467,445,'E0422.资源利用科学及其他','javascript:change(\'E0422\');','资源利用科学及其他');
+d.add(468,400,'E05.机械工程','javascript:change(\'E05\');','机械工程');
+d.add(469,468,'E0501.机构学与机器人','javascript:change(\'E0501\');','机构学与机器人');
+d.add(470,468,'E0502.传动机械学','javascript:change(\'E0502\');','传动机械学');
+d.add(471,468,'E0503.机械动力学','javascript:change(\'E0503\');','机械动力学');
+d.add(472,468,'E0504.机械结构强度学','javascript:change(\'E0504\');','机械结构强度学');
+d.add(473,468,'E0505.机械摩擦学与表面技术','javascript:change(\'E0505\');','机械摩擦学与表面技术');
+d.add(474,468,'E0506.机械设计学','javascript:change(\'E0506\');','机械设计学');
+d.add(475,468,'E0507.机械仿生学','javascript:change(\'E0507\');','机械仿生学');
+d.add(476,468,'E0508.零件成形制造','javascript:change(\'E0508\');','零件成形制造');
+d.add(477,468,'E0509.零件加工制造','javascript:change(\'E0509\');','零件加工制造');
+d.add(478,468,'E0510.制造系统与自动化','javascript:change(\'E0510\');','制造系统与自动化');
+d.add(479,468,'E0511.机械测试理论与技术','javascript:change(\'E0511\');','机械测试理论与技术');
+d.add(480,468,'E0512.微/纳机械系统','javascript:change(\'E0512\');','微/纳机械系统');
+d.add(481,400,'E06.工程热物理与能源利用','javascript:change(\'E06\');','工程热物理与能源利用');
+d.add(482,481,'E0601.工程热力学','javascript:change(\'E0601\');','工程热力学');
+d.add(483,481,'E0602.内流流体力学','javascript:change(\'E0602\');','内流流体力学');
+d.add(484,481,'E0603.传热传质学','javascript:change(\'E0603\');','传热传质学');
+d.add(485,481,'E0604.燃烧学','javascript:change(\'E0604\');','燃烧学');
+d.add(486,481,'E0605.多相流热物理学','javascript:change(\'E0605\');','多相流热物理学');
+d.add(487,481,'E0606.热物性与热物理测试技术','javascript:change(\'E0606\');','热物性与热物理测试技术');
+d.add(488,481,'E0607.可再生与替代能源利用中的工程热物理问题','javascript:change(\'E0607\');','可再生与替代能源利用中的工程热物理问题');
+d.add(489,481,'E0608.工程热物理相关交叉领域','javascript:change(\'E0608\');','工程热物理相关交叉领域');
+d.add(490,400,'E07.电气科学与工程','javascript:change(\'E07\');','电气科学与工程');
+d.add(491,490,'E0701.电磁场与电路','javascript:change(\'E0701\');','电磁场与电路');
+d.add(492,490,'E0702.电工材料特性及其应用','javascript:change(\'E0702\');','电工材料特性及其应用');
+d.add(493,490,'E0703.电机与电器','javascript:change(\'E0703\');','电机与电器');
+d.add(494,490,'E0704.电力系统','javascript:change(\'E0704\');','电力系统');
+d.add(495,490,'E0705.高电压与绝缘','javascript:change(\'E0705\');','高电压与绝缘');
+d.add(496,490,'E0706.电力电子学','javascript:change(\'E0706\');','电力电子学');
+d.add(497,490,'E0707.脉冲功率技术','javascript:change(\'E0707\');','脉冲功率技术');
+d.add(498,490,'E0708.气体放电与放电等离子体技术','javascript:change(\'E0708\');','气体放电与放电等离子体技术');
+d.add(499,490,'E0709.电磁环境与电磁兼容','javascript:change(\'E0709\');','电磁环境与电磁兼容');
+d.add(500,490,'E0710.超导电工学','javascript:change(\'E0710\');','超导电工学');
+d.add(501,490,'E0711.生物电磁技术','javascript:change(\'E0711\');','生物电磁技术');
+d.add(502,490,'E0712.电能储存与节电技术','javascript:change(\'E0712\');','电能储存与节电技术');
+d.add(503,400,'E08.建筑环境与结构工程','javascript:change(\'E08\');','建筑环境与结构工程');
+d.add(504,503,'E0801.建筑学','javascript:change(\'E0801\');','建筑学');
+d.add(505,503,'E0802.城乡规划','javascript:change(\'E0802\');','城乡规划');
+d.add(506,503,'E0803.建筑物理','javascript:change(\'E0803\');','建筑物理');
+d.add(507,503,'E0804.环境工程','javascript:change(\'E0804\');','环境工程');
+d.add(508,503,'E0805.结构工程','javascript:change(\'E0805\');','结构工程');
+d.add(509,503,'E0806.岩土与基础工程','javascript:change(\'E0806\');','岩土与基础工程');
+d.add(510,503,'E0807.交通工程','javascript:change(\'E0807\');','交通工程');
+d.add(511,503,'E0808.防灾工程','javascript:change(\'E0808\');','防灾工程');
+d.add(512,400,'E09.水利科学与海洋工程','javascript:change(\'E09\');','水利科学与海洋工程');
+d.add(513,512,'E0901.水文、水资源','javascript:change(\'E0901\');','水文、水资源');
+d.add(514,512,'E0902.农业水利','javascript:change(\'E0902\');','农业水利');
+d.add(515,512,'E0903.水环境与生态水利','javascript:change(\'E0903\');','水环境与生态水利');
+d.add(516,512,'E0904.河流海岸动力学与泥沙研究','javascript:change(\'E0904\');','河流海岸动力学与泥沙研究');
+d.add(517,512,'E0905.水力学与水信息学','javascript:change(\'E0905\');','水力学与水信息学');
+d.add(518,512,'E0906.水力机械及其系统','javascript:change(\'E0906\');','水力机械及其系统');
+d.add(519,512,'E0907.岩土力学与岩土工程','javascript:change(\'E0907\');','岩土力学与岩土工程');
+d.add(520,512,'E0908.水工结构和材料及施工','javascript:change(\'E0908\');','水工结构和材料及施工');
+d.add(521,512,'E0909.海岸工程','javascript:change(\'E0909\');','海岸工程');
+d.add(522,512,'E0910.海洋工程','javascript:change(\'E0910\');','海洋工程');
+d.add(523,0,'F.信息综合处','javascript:change(\'F\');','信息综合处');
+d.add(524,523,'F01.电子学与信息系统','javascript:change(\'F01\');','电子学与信息系统');
+d.add(525,524,'F0101.信息理论与信息系统','javascript:change(\'F0101\');','信息理论与信息系统');
+d.add(526,524,'F0102.通信理论与系统','javascript:change(\'F0102\');','通信理论与系统');
+d.add(527,524,'F0103.信号理论与信号处理','javascript:change(\'F0103\');','信号理论与信号处理');
+d.add(528,524,'F0104.信息处理方法与技术','javascript:change(\'F0104\');','信息处理方法与技术');
+d.add(529,524,'F0105.电路与系统','javascript:change(\'F0105\');','电路与系统');
+d.add(530,524,'F0106.电磁场与波','javascript:change(\'F0106\');','电磁场与波');
+d.add(531,524,'F0107.物理电子学','javascript:change(\'F0107\');','物理电子学');
+d.add(532,524,'F0108.生物电子学与生物信息处理','javascript:change(\'F0108\');','生物电子学与生物信息处理');
+d.add(533,524,'F0109.敏感电子学与传感器','javascript:change(\'F0109\');','敏感电子学与传感器');
+d.add(534,523,'F02.计算机科学','javascript:change(\'F02\');','计算机科学');
+d.add(535,534,'F0201.计算机科学的基础理论','javascript:change(\'F0201\');','计算机科学的基础理论');
+d.add(536,534,'F0202.计算机软件','javascript:change(\'F0202\');','计算机软件');
+d.add(537,534,'F0203.计算机体系结构','javascript:change(\'F0203\');','计算机体系结构');
+d.add(538,534,'F0204.计算机硬件技术','javascript:change(\'F0204\');','计算机硬件技术');
+d.add(539,534,'F0205.计算机应用技术','javascript:change(\'F0205\');','计算机应用技术');
+d.add(540,534,'F0206.自然语言理解与机器翻译','javascript:change(\'F0206\');','自然语言理解与机器翻译');
+d.add(541,534,'F0207.信息安全','javascript:change(\'F0207\');','信息安全');
+d.add(542,534,'F0208.计算机网络','javascript:change(\'F0208\');','计算机网络');
+d.add(543,523,'F03.自动化','javascript:change(\'F03\');','自动化');
+d.add(544,543,'F0301.控制理论与方法','javascript:change(\'F0301\');','控制理论与方法');
+d.add(545,543,'F0302.系统科学与系统工程','javascript:change(\'F0302\');','系统科学与系统工程');
+d.add(546,543,'F0303.导航、制导与传感技术','javascript:change(\'F0303\');','导航、制导与传感技术');
+d.add(547,543,'F0304.模式识别','javascript:change(\'F0304\');','模式识别');
+d.add(548,543,'F0305.人工智能与知识工程','javascript:change(\'F0305\');','人工智能与知识工程');
+d.add(549,543,'F0306.机器人学及机器人技术','javascript:change(\'F0306\');','机器人学及机器人技术');
+d.add(550,543,'F0307.认知科学及智能信息处理','javascript:change(\'F0307\');','认知科学及智能信息处理');
+d.add(551,523,'F04.半导体科学与信息器件','javascript:change(\'F04\');','半导体科学与信息器件');
+d.add(552,551,'F0401.半导体晶体与薄膜材料','javascript:change(\'F0401\');','半导体晶体与薄膜材料');
+d.add(553,551,'F0402.集成电路设计与测试','javascript:change(\'F0402\');','集成电路设计与测试');
+d.add(554,551,'F0403.半导体光电子器件','javascript:change(\'F0403\');','半导体光电子器件');
+d.add(555,551,'F0404.半导体电子器件','javascript:change(\'F0404\');','半导体电子器件');
+d.add(556,551,'F0405.半导体物理','javascript:change(\'F0405\');','半导体物理');
+d.add(557,551,'F0406.集成电路制造与封装','javascript:change(\'F0406\');','集成电路制造与封装');
+d.add(558,551,'F0407.半导体微纳机电器件与系统','javascript:change(\'F0407\');','半导体微纳机电器件与系统');
+d.add(559,551,'F0408.新型信息器件','javascript:change(\'F0408\');','新型信息器件');
+d.add(560,523,'F05.光学和光电子学','javascript:change(\'F05\');','光学和光电子学');
+d.add(561,560,'F0501.光学信息获取与处理','javascript:change(\'F0501\');','光学信息获取与处理');
+d.add(562,560,'F0502.光子与光电子器件','javascript:change(\'F0502\');','光子与光电子器件');
+d.add(563,560,'F0503.传输与交换光子学','javascript:change(\'F0503\');','传输与交换光子学');
+d.add(564,560,'F0504.红外物理与技术','javascript:change(\'F0504\');','红外物理与技术');
+d.add(565,560,'F0505.非线性光学与量子光学','javascript:change(\'F0505\');','非线性光学与量子光学');
+d.add(566,560,'F0506.激光','javascript:change(\'F0506\');','激光');
+d.add(567,560,'F0507.光谱技术','javascript:change(\'F0507\');','光谱技术');
+d.add(568,560,'F0508.应用光学','javascript:change(\'F0508\');','应用光学');
+d.add(569,560,'F0509.光学和光电子材料','javascript:change(\'F0509\');','光学和光电子材料');
+d.add(570,560,'F0510.空间光学','javascript:change(\'F0510\');','空间光学');
+d.add(571,560,'F0511.大气与海洋光学','javascript:change(\'F0511\');','大气与海洋光学');
+d.add(572,560,'F0512.生物、医学光子学','javascript:change(\'F0512\');','生物、医学光子学');
+d.add(573,560,'F0513.交叉学科中的光学问题','javascript:change(\'F0513\');','交叉学科中的光学问题');
+d.add(574,523,'F11.可信软件','javascript:change(\'F11\');','可信软件');
+d.add(575,0,'G.管理综合处','javascript:change(\'G\');','管理综合处');
+d.add(576,575,'G01.管理科学与工程','javascript:change(\'G01\');','管理科学与工程');
+d.add(577,576,'G0101.管理科学和管理思想史','javascript:change(\'G0101\');','管理科学和管理思想史');
+d.add(578,576,'G0102.一般管理理论与研究方法论','javascript:change(\'G0102\');','一般管理理论与研究方法论');
+d.add(579,576,'G0103.运筹与管理','javascript:change(\'G0103\');','运筹与管理');
+d.add(580,576,'G0104.决策理论与方法','javascript:change(\'G0104\');','决策理论与方法');
+d.add(581,576,'G0105.对策理论与方法','javascript:change(\'G0105\');','对策理论与方法');
+d.add(582,576,'G0106.评价理论与方法','javascript:change(\'G0106\');','评价理论与方法');
+d.add(583,576,'G0107.预测理论与方法','javascript:change(\'G0107\');','预测理论与方法');
+d.add(584,576,'G0108.管理心理与行为','javascript:change(\'G0108\');','管理心理与行为');
+d.add(585,576,'G0109.管理系统工程','javascript:change(\'G0109\');','管理系统工程');
+d.add(586,576,'G0110.工业工程与管理','javascript:change(\'G0110\');','工业工程与管理');
+d.add(587,576,'G0111.系统可靠性与管理','javascript:change(\'G0111\');','系统可靠性与管理');
+d.add(588,576,'G0112.信息系统与管理','javascript:change(\'G0112\');','信息系统与管理');
+d.add(589,576,'G0113.数量经济理论与方法','javascript:change(\'G0113\');','数量经济理论与方法');
+d.add(590,576,'G0114.风险管理技术与方法','javascript:change(\'G0114\');','风险管理技术与方法');
+d.add(591,576,'G0115.金融工程','javascript:change(\'G0115\');','金融工程');
+d.add(592,576,'G0116.管理复杂性研究','javascript:change(\'G0116\');','管理复杂性研究');
+d.add(593,576,'G0117.知识管理','javascript:change(\'G0117\');','知识管理');
+d.add(594,576,'G0118.工程管理','javascript:change(\'G0118\');','工程管理');
+d.add(595,575,'G02.工商管理','javascript:change(\'G02\');','工商管理');
+d.add(596,595,'G0201.战略管理','javascript:change(\'G0201\');','战略管理');
+d.add(597,595,'G0202.企业理论','javascript:change(\'G0202\');','企业理论');
+d.add(598,595,'G0203.创新管理','javascript:change(\'G0203\');','创新管理');
+d.add(599,595,'G0204.组织行为与组织文化','javascript:change(\'G0204\');','组织行为与组织文化');
+d.add(600,595,'G0205.人力资源管理','javascript:change(\'G0205\');','人力资源管理');
+d.add(601,595,'G0206.公司理财与财务管理','javascript:change(\'G0206\');','公司理财与财务管理');
+d.add(602,595,'G0207.会计与审计','javascript:change(\'G0207\');','会计与审计');
+d.add(603,595,'G0208.市场营销','javascript:change(\'G0208\');','市场营销');
+d.add(604,595,'G0209.运作管理','javascript:change(\'G0209\');','运作管理');
+d.add(605,595,'G0210.技术管理与技术经济','javascript:change(\'G0210\');','技术管理与技术经济');
+d.add(606,595,'G0211.企业信息管理','javascript:change(\'G0211\');','企业信息管理');
+d.add(607,595,'G0212.物流与供应链管理','javascript:change(\'G0212\');','物流与供应链管理');
+d.add(608,595,'G0213.项目管理','javascript:change(\'G0213\');','项目管理');
+d.add(609,595,'G0214.服务管理','javascript:change(\'G0214\');','服务管理');
+d.add(610,595,'G0215.创业与中小企业管理','javascript:change(\'G0215\');','创业与中小企业管理');
+d.add(611,595,'G0216.非营利组织管理','javascript:change(\'G0216\');','非营利组织管理');
+d.add(612,575,'G03.宏观管理与政策','javascript:change(\'G03\');','宏观管理与政策');
+d.add(613,612,'G0301.宏观经济管理与战略','javascript:change(\'G0301\');','宏观经济管理与战略');
+d.add(614,612,'G0302.金融管理与政策','javascript:change(\'G0302\');','金融管理与政策');
+d.add(615,612,'G0303.财税管理与政策','javascript:change(\'G0303\');','财税管理与政策');
+d.add(616,612,'G0304.产业政策与管理','javascript:change(\'G0304\');','产业政策与管理');
+d.add(617,612,'G0305.农林经济管理','javascript:change(\'G0305\');','农林经济管理');
+d.add(618,612,'G0306.公共管理与公共政策','javascript:change(\'G0306\');','公共管理与公共政策');
+d.add(619,612,'G0307.科技管理与政策','javascript:change(\'G0307\');','科技管理与政策');
+d.add(620,612,'G0308.卫生管理与政策','javascript:change(\'G0308\');','卫生管理与政策');
+d.add(621,612,'G0309.教育管理与政策','javascript:change(\'G0309\');','教育管理与政策');
+d.add(622,612,'G0310.公共安全与危机管理','javascript:change(\'G0310\');','公共安全与危机管理');
+d.add(623,612,'G0311.劳动就业与社会保障','javascript:change(\'G0311\');','劳动就业与社会保障');
+d.add(624,612,'G0312.资源环境政策与管理','javascript:change(\'G0312\');','资源环境政策与管理');
+d.add(625,612,'G0313.区域发展管理','javascript:change(\'G0313\');','区域发展管理');
+d.add(626,612,'G0314.信息资源管理','javascript:change(\'G0314\');','信息资源管理');
+d.add(627,0,'H.医学部综合处','javascript:change(\'H\');','医学部综合处');
+d.add(628,null,'H0001.医学综合处1','javascript:change(\'H0001\');','医学综合处1');
+d.add(629,627,'H01.呼吸系统','javascript:change(\'H01\');','呼吸系统');
+d.add(630,629,'H0101.肺及气道结构、功能及发育异常','javascript:change(\'H0101\');','肺及气道结构、功能及发育异常');
+d.add(631,629,'H0102.呼吸系统遗传性疾病','javascript:change(\'H0102\');','呼吸系统遗传性疾病');
+d.add(632,629,'H0103.呼吸调控异常','javascript:change(\'H0103\');','呼吸调控异常');
+d.add(633,629,'H0104.呼吸系统炎症与感染','javascript:change(\'H0104\');','呼吸系统炎症与感染');
+d.add(634,629,'H0105.呼吸系统免疫性疾病及变应性肺疾病','javascript:change(\'H0105\');','呼吸系统免疫性疾病及变应性肺疾病');
+d.add(635,629,'H0106.气道重塑与气道疾病','javascript:change(\'H0106\');','气道重塑与气道疾病');
+d.add(636,629,'H0107.支气管哮喘','javascript:change(\'H0107\');','支气管哮喘');
+d.add(637,629,'H0108.慢性阻塞性肺疾病','javascript:change(\'H0108\');','慢性阻塞性肺疾病');
+d.add(638,629,'H0109.肺循环及肺血管疾病','javascript:change(\'H0109\');','肺循环及肺血管疾病');
+d.add(639,629,'H0110.间质性肺疾病','javascript:change(\'H0110\');','间质性肺疾病');
+d.add(640,629,'H0111.急性肺损伤和急性呼吸窘迫综合征','javascript:change(\'H0111\');','急性肺损伤和急性呼吸窘迫综合征');
+d.add(641,629,'H0112.呼吸衰竭与呼吸支持','javascript:change(\'H0112\');','呼吸衰竭与呼吸支持');
+d.add(642,629,'H0113.睡眠呼吸障碍','javascript:change(\'H0113\');','睡眠呼吸障碍');
+d.add(643,629,'H0114.纵隔与胸膜疾病','javascript:change(\'H0114\');','纵隔与胸膜疾病');
+d.add(644,629,'H0115.胸廓/膈肌结构、功能及发育异常','javascript:change(\'H0115\');','胸廓/膈肌结构、功能及发育异常');
+d.add(645,629,'H0116.肺移植和肺保护','javascript:change(\'H0116\');','肺移植和肺保护');
+d.add(646,629,'H0117.呼吸系统疾病诊疗新技术','javascript:change(\'H0117\');','呼吸系统疾病诊疗新技术');
+d.add(647,629,'H0118.呼吸系统疾病其他科学问题','javascript:change(\'H0118\');','呼吸系统疾病其他科学问题');
+d.add(648,627,'H02.循环系统','javascript:change(\'H02\');','循环系统');
+d.add(649,648,'H0201.心脏结构与功能异常','javascript:change(\'H0201\');','心脏结构与功能异常');
+d.add(650,648,'H0202.循环系统遗传性疾病','javascript:change(\'H0202\');','循环系统遗传性疾病');
+d.add(651,648,'H0203.心肌细胞/血管细胞损伤、修复、重构和再生','javascript:change(\'H0203\');','心肌细胞/血管细胞损伤、修复、重构和再生');
+d.add(652,648,'H0204.心脏发育异常与先天性心脏病','javascript:change(\'H0204\');','心脏发育异常与先天性心脏病');
+d.add(653,648,'H0205.心电活动异常与心律失常','javascript:change(\'H0205\');','心电活动异常与心律失常');
+d.add(654,648,'H0206.冠状动脉性心脏病','javascript:change(\'H0206\');','冠状动脉性心脏病');
+d.add(655,648,'H0207.肺源性心脏病','javascript:change(\'H0207\');','肺源性心脏病');
+d.add(656,648,'H0208.心肌炎和心肌病','javascript:change(\'H0208\');','心肌炎和心肌病');
+d.add(657,648,'H0209.感染性心内膜炎','javascript:change(\'H0209\');','感染性心内膜炎');
+d.add(658,648,'H0210.心脏瓣膜疾病','javascript:change(\'H0210\');','心脏瓣膜疾病');
+d.add(659,648,'H0211.心包疾病','javascript:change(\'H0211\');','心包疾病');
+d.add(660,648,'H0212.心力衰竭','javascript:change(\'H0212\');','心力衰竭');
+d.add(661,648,'H0213.心脏/血管移植和辅助循环','javascript:change(\'H0213\');','心脏/血管移植和辅助循环');
+d.add(662,648,'H0214.血压调节异常与高血压病','javascript:change(\'H0214\');','血压调节异常与高血压病');
+d.add(663,648,'H0215.动脉粥样硬化与动脉硬化','javascript:change(\'H0215\');','动脉粥样硬化与动脉硬化');
+d.add(664,648,'H0216.主动脉疾病','javascript:change(\'H0216\');','主动脉疾病');
+d.add(665,648,'H0217.周围血管疾病','javascript:change(\'H0217\');','周围血管疾病');
+d.add(666,648,'H0218.淋巴管与淋巴循环疾病','javascript:change(\'H0218\');','淋巴管与淋巴循环疾病');
+d.add(667,648,'H0219.微循环与休克','javascript:change(\'H0219\');','微循环与休克');
+d.add(668,648,'H0220.血管发生异常及血管结构与功能异常','javascript:change(\'H0220\');','血管发生异常及血管结构与功能异常');
+d.add(669,648,'H0221.循环系统免疫相关疾病','javascript:change(\'H0221\');','循环系统免疫相关疾病');
+d.add(670,648,'H0222.循环系统疾病诊疗新技术','javascript:change(\'H0222\');','循环系统疾病诊疗新技术');
+d.add(671,648,'H0223.循环系统疾病其他科学问题','javascript:change(\'H0223\');','循环系统疾病其他科学问题');
+d.add(672,627,'H03.消化系统','javascript:change(\'H03\');','消化系统');
+d.add(673,672,'H0301.消化系统发育异常','javascript:change(\'H0301\');','消化系统发育异常');
+d.add(674,672,'H0302.消化系统遗传性疾病','javascript:change(\'H0302\');','消化系统遗传性疾病');
+d.add(675,672,'H0303.消化道结构与功能异常','javascript:change(\'H0303\');','消化道结构与功能异常');
+d.add(676,672,'H0304.肝胆胰结构与功能异常','javascript:change(\'H0304\');','肝胆胰结构与功能异常');
+d.add(677,672,'H0305.腹壁/腹膜结构及功能异常','javascript:change(\'H0305\');','腹壁/腹膜结构及功能异常');
+d.add(678,672,'H0306.消化道内环境紊乱、黏膜屏障障碍及相关疾病','javascript:change(\'H0306\');','消化道内环境紊乱、黏膜屏障障碍及相关疾病');
+d.add(679,672,'H0307.消化道动力异常及功能性胃肠病','javascript:change(\'H0307\');','消化道动力异常及功能性胃肠病');
+d.add(680,672,'H0308.消化系统内分泌及神经体液调节异常','javascript:change(\'H0308\');','消化系统内分泌及神经体液调节异常');
+d.add(681,672,'H0309.胃酸分泌异常及酸相关性疾病','javascript:change(\'H0309\');','胃酸分泌异常及酸相关性疾病');
+d.add(682,672,'H0310.胃肠道免疫相关疾病','javascript:change(\'H0310\');','胃肠道免疫相关疾病');
+d.add(683,672,'H0311.消化系统血管及循环障碍性疾病','javascript:change(\'H0311\');','消化系统血管及循环障碍性疾病');
+d.add(684,672,'H0312.胃肠道及腹腔感染性疾病','javascript:change(\'H0312\');','胃肠道及腹腔感染性疾病');
+d.add(685,672,'H0313.肝胆胰免疫及相关疾病','javascript:change(\'H0313\');','肝胆胰免疫及相关疾病');
+d.add(686,672,'H0314.肝脏代谢障碍及相关疾病','javascript:change(\'H0314\');','肝脏代谢障碍及相关疾病');
+d.add(687,672,'H0315.药物、毒物及酒精性消化系统疾病','javascript:change(\'H0315\');','药物、毒物及酒精性消化系统疾病');
+d.add(688,672,'H0316.炎性及感染性肝病','javascript:change(\'H0316\');','炎性及感染性肝病');
+d.add(689,672,'H0317.肝纤维化、肝硬化与门脉高压症','javascript:change(\'H0317\');','肝纤维化、肝硬化与门脉高压症');
+d.add(690,672,'H0318.肝再生、肝保护、肝衰竭、人工肝','javascript:change(\'H0318\');','肝再生、肝保护、肝衰竭、人工肝');
+d.add(691,672,'H0319.胆石成因、胆石症及胆道系统炎症','javascript:change(\'H0319\');','胆石成因、胆石症及胆道系统炎症');
+d.add(692,672,'H0320.胰腺外分泌功能异常与胰腺炎','javascript:change(\'H0320\');','胰腺外分泌功能异常与胰腺炎');
+d.add(693,672,'H0321.消化系统器官移植','javascript:change(\'H0321\');','消化系统器官移植');
+d.add(694,672,'H0322.消化系统疾病诊疗新技术','javascript:change(\'H0322\');','消化系统疾病诊疗新技术');
+d.add(695,672,'H0323.消化系统疾病其他科学问题','javascript:change(\'H0323\');','消化系统疾病其他科学问题');
+d.add(696,627,'H04.生殖系统/围生医学/新生儿','javascript:change(\'H04\');','生殖系统/围生医学/新生儿');
+d.add(697,696,'H0401.女性生殖系统结构、功能与发育异常','javascript:change(\'H0401\');','女性生殖系统结构、功能与发育异常');
+d.add(698,696,'H0402.女性生殖系统损伤与修复','javascript:change(\'H0402\');','女性生殖系统损伤与修复');
+d.add(699,696,'H0403.女性生殖系统炎症与感染','javascript:change(\'H0403\');','女性生殖系统炎症与感染');
+d.add(700,696,'H0404.女性生殖内分泌异常及相关疾病','javascript:change(\'H0404\');','女性生殖内分泌异常及相关疾病');
+d.add(701,696,'H0405.女性生殖系统遗传性疾病','javascript:change(\'H0405\');','女性生殖系统遗传性疾病');
+d.add(702,696,'H0406.子宫内膜异位症与子宫腺肌症','javascript:change(\'H0406\');','子宫内膜异位症与子宫腺肌症');
+d.add(703,696,'H0407.女性盆底功能障碍','javascript:change(\'H0407\');','女性盆底功能障碍');
+d.add(704,696,'H0408.女性性功能障碍','javascript:change(\'H0408\');','女性性功能障碍');
+d.add(705,696,'H0409.乳腺结构、功能及发育异常','javascript:change(\'H0409\');','乳腺结构、功能及发育异常');
+d.add(706,696,'H0410.男性生殖系统结构、功能与发育异常','javascript:change(\'H0410\');','男性生殖系统结构、功能与发育异常');
+d.add(707,696,'H0411.男性生殖系统损伤与修复','javascript:change(\'H0411\');','男性生殖系统损伤与修复');
+d.add(708,696,'H0412.男性生殖系统炎症与感染','javascript:change(\'H0412\');','男性生殖系统炎症与感染');
+d.add(709,696,'H0413.男性生殖内分泌异常及相关疾病','javascript:change(\'H0413\');','男性生殖内分泌异常及相关疾病');
+d.add(710,696,'H0414.男性生殖系统遗传性疾病','javascript:change(\'H0414\');','男性生殖系统遗传性疾病');
+d.add(711,696,'H0415.男性性功能障碍','javascript:change(\'H0415\');','男性性功能障碍');
+d.add(712,696,'H0416.卵子发生与受精异常','javascript:change(\'H0416\');','卵子发生与受精异常');
+d.add(713,696,'H0417.胚胎着床及早期胚胎发育异常','javascript:change(\'H0417\');','胚胎着床及早期胚胎发育异常');
+d.add(714,696,'H0418.胎盘结构与功能异常','javascript:change(\'H0418\');','胎盘结构与功能异常');
+d.add(715,696,'H0419.胎儿发育与产前诊断','javascript:change(\'H0419\');','胎儿发育与产前诊断');
+d.add(716,696,'H0420.妊娠及妊娠相关性疾病','javascript:change(\'H0420\');','妊娠及妊娠相关性疾病');
+d.add(717,696,'H0421.分娩与产褥','javascript:change(\'H0421\');','分娩与产褥');
+d.add(718,696,'H0422.新生儿相关疾病','javascript:change(\'H0422\');','新生儿相关疾病');
+d.add(719,696,'H0423.避孕、节育与妊娠终止','javascript:change(\'H0423\');','避孕、节育与妊娠终止');
+d.add(720,696,'H0424.精子发生异常与男性不育','javascript:change(\'H0424\');','精子发生异常与男性不育');
+d.add(721,696,'H0425.女性不孕不育与辅助生殖','javascript:change(\'H0425\');','女性不孕不育与辅助生殖');
+d.add(722,696,'H0426.生殖医学工程','javascript:change(\'H0426\');','生殖医学工程');
+d.add(723,696,'H0427.生殖免疫相关疾病','javascript:change(\'H0427\');','生殖免疫相关疾病');
+d.add(724,696,'H0428.生殖系统移植','javascript:change(\'H0428\');','生殖系统移植');
+d.add(725,696,'H0429.生殖系统/围生医学/新生儿疾病相关诊疗新技术','javascript:change(\'H0429\');','生殖系统/围生医学/新生儿疾病相关诊疗新技术');
+d.add(726,696,'H0430.生殖系统/围生医学/新生儿疾病其他科学问题','javascript:change(\'H0430\');','生殖系统/围生医学/新生儿疾病其他科学问题');
+d.add(727,627,'H05.泌尿系统','javascript:change(\'H05\');','泌尿系统');
+d.add(728,727,'H0501.泌尿系统结构、功能与发育异常','javascript:change(\'H0501\');','泌尿系统结构、功能与发育异常');
+d.add(729,727,'H0502.泌尿系统遗传性疾病','javascript:change(\'H0502\');','泌尿系统遗传性疾病');
+d.add(730,727,'H0503.泌尿系统损伤与修复','javascript:change(\'H0503\');','泌尿系统损伤与修复');
+d.add(731,727,'H0504.泌尿系统感染','javascript:change(\'H0504\');','泌尿系统感染');
+d.add(732,727,'H0505.泌尿系统免疫相关疾病','javascript:change(\'H0505\');','泌尿系统免疫相关疾病');
+d.add(733,727,'H0506.泌尿系统结石','javascript:change(\'H0506\');','泌尿系统结石');
+d.add(734,727,'H0507.肾脏物质转运异常','javascript:change(\'H0507\');','肾脏物质转运异常');
+d.add(735,727,'H0508.肾脏内分泌功能异常','javascript:change(\'H0508\');','肾脏内分泌功能异常');
+d.add(736,727,'H0509.原发性肾脏疾病','javascript:change(\'H0509\');','原发性肾脏疾病');
+d.add(737,727,'H0510.继发性肾脏疾病','javascript:change(\'H0510\');','继发性肾脏疾病');
+d.add(738,727,'H0511.肾衰竭','javascript:change(\'H0511\');','肾衰竭');
+d.add(739,727,'H0512.肾移植','javascript:change(\'H0512\');','肾移植');
+d.add(740,727,'H0513.前列腺疾病','javascript:change(\'H0513\');','前列腺疾病');
+d.add(741,727,'H0514.膀胱疾病','javascript:change(\'H0514\');','膀胱疾病');
+d.add(742,727,'H0515.尿动力学','javascript:change(\'H0515\');','尿动力学');
+d.add(743,727,'H0516.血液净化和替代治疗','javascript:change(\'H0516\');','血液净化和替代治疗');
+d.add(744,727,'H0517.泌尿系统疾病诊疗新技术','javascript:change(\'H0517\');','泌尿系统疾病诊疗新技术');
+d.add(745,727,'H0518.泌尿系统疾病其他科学问题','javascript:change(\'H0518\');','泌尿系统疾病其他科学问题');
+d.add(746,627,'H06.运动系统','javascript:change(\'H06\');','运动系统');
+d.add(747,746,'H0601.运动系统结构、功能和发育异常','javascript:change(\'H0601\');','运动系统结构、功能和发育异常');
+d.add(748,746,'H0602.运动系统遗传性疾病','javascript:change(\'H0602\');','运动系统遗传性疾病');
+d.add(749,746,'H0603.运动系统免疫相关疾病','javascript:change(\'H0603\');','运动系统免疫相关疾病');
+d.add(750,746,'H0604.骨、关节、软组织医用材料','javascript:change(\'H0604\');','骨、关节、软组织医用材料');
+d.add(751,746,'H0605.骨、关节、软组织损伤与修复','javascript:change(\'H0605\');','骨、关节、软组织损伤与修复');
+d.add(752,746,'H0606.骨、关节、软组织移植与重建','javascript:change(\'H0606\');','骨、关节、软组织移植与重建');
+d.add(753,746,'H0607.骨、关节、软组织感染','javascript:change(\'H0607\');','骨、关节、软组织感染');
+d.add(754,746,'H0608.骨、关节、软组织疲劳与恢复','javascript:change(\'H0608\');','骨、关节、软组织疲劳与恢复');
+d.add(755,746,'H0609.骨、关节、软组织退行性病变','javascript:change(\'H0609\');','骨、关节、软组织退行性病变');
+d.add(756,746,'H0610.骨、关节、软组织运动损伤','javascript:change(\'H0610\');','骨、关节、软组织运动损伤');
+d.add(757,746,'H0611.运动系统畸形与矫正','javascript:change(\'H0611\');','运动系统畸形与矫正');
+d.add(758,746,'H0612.运动系统疾病诊疗新技术','javascript:change(\'H0612\');','运动系统疾病诊疗新技术');
+d.add(759,746,'H0613.运动系统疾病其他科学问题','javascript:change(\'H0613\');','运动系统疾病其他科学问题');
+d.add(760,627,'H07.内分泌系统/代谢和营养支持','javascript:change(\'H07\');','内分泌系统/代谢和营养支持');
+d.add(761,760,'H0701.松果体/下丘脑/垂体发育及结构异常','javascript:change(\'H0701\');','松果体/下丘脑/垂体发育及结构异常');
+d.add(762,760,'H0702.甲状腺/甲状旁腺发育及结构异常','javascript:change(\'H0702\');','甲状腺/甲状旁腺发育及结构异常');
+d.add(763,760,'H0703.肾上腺发育及结构异常','javascript:change(\'H0703\');','肾上腺发育及结构异常');
+d.add(764,760,'H0704.胰岛发育、胰岛细胞分化再生及功能调控异常与胰岛移植','javascript:change(\'H0704\');','胰岛发育、胰岛细胞分化再生及功能调控异常与胰岛移植');
+d.add(765,760,'H0705.内分泌系统炎症与感染','javascript:change(\'H0705\');','内分泌系统炎症与感染');
+d.add(766,760,'H0706.内分泌系统遗传性疾病','javascript:change(\'H0706\');','内分泌系统遗传性疾病');
+d.add(767,760,'H0707.内分泌系统免疫相关疾病','javascript:change(\'H0707\');','内分泌系统免疫相关疾病');
+d.add(768,760,'H0708.松果体/下丘脑/垂体疾病及功能异常','javascript:change(\'H0708\');','松果体/下丘脑/垂体疾病及功能异常');
+d.add(769,760,'H0709.甲状腺/甲状旁腺疾病及功能异常','javascript:change(\'H0709\');','甲状腺/甲状旁腺疾病及功能异常');
+d.add(770,760,'H0710.肾上腺疾病及功能异常','javascript:change(\'H0710\');','肾上腺疾病及功能异常');
+d.add(771,760,'H0711.糖尿病发生的遗传和环境因素','javascript:change(\'H0711\');','糖尿病发生的遗传和环境因素');
+d.add(772,760,'H0712.血糖调控异常与胰岛素抵抗','javascript:change(\'H0712\');','血糖调控异常与胰岛素抵抗');
+d.add(773,760,'H0713.糖尿病','javascript:change(\'H0713\');','糖尿病');
+d.add(774,760,'H0714.其他组织的内分泌功能异常','javascript:change(\'H0714\');','其他组织的内分泌功能异常');
+d.add(775,760,'H0715.甲状腺和甲状旁腺移植','javascript:change(\'H0715\');','甲状腺和甲状旁腺移植');
+d.add(776,760,'H0716.能量代谢调节异常及肥胖','javascript:change(\'H0716\');','能量代谢调节异常及肥胖');
+d.add(777,760,'H0717.代谢综合征','javascript:change(\'H0717\');','代谢综合征');
+d.add(778,760,'H0718.糖代谢异常','javascript:change(\'H0718\');','糖代谢异常');
+d.add(779,760,'H0719.脂代谢异常','javascript:change(\'H0719\');','脂代谢异常');
+d.add(780,760,'H0720.脂肪细胞分化及功能异常','javascript:change(\'H0720\');','脂肪细胞分化及功能异常');
+d.add(781,760,'H0721.氨基酸代谢异常','javascript:change(\'H0721\');','氨基酸代谢异常');
+d.add(782,760,'H0722.核酸代谢异常','javascript:change(\'H0722\');','核酸代谢异常');
+d.add(783,760,'H0723.水、电解质代谢障碍及酸碱平衡异常','javascript:change(\'H0723\');','水、电解质代谢障碍及酸碱平衡异常');
+d.add(784,760,'H0724.微量元素、维生素代谢异常','javascript:change(\'H0724\');','微量元素、维生素代谢异常');
+d.add(785,760,'H0725.钙磷代谢异常','javascript:change(\'H0725\');','钙磷代谢异常');
+d.add(786,760,'H0726.骨转换、骨代谢异常和骨质疏松','javascript:change(\'H0726\');','骨转换、骨代谢异常和骨质疏松');
+d.add(787,760,'H0727.营养不良与营养支持','javascript:change(\'H0727\');','营养不良与营养支持');
+d.add(788,760,'H0728.遗传性代谢缺陷','javascript:change(\'H0728\');','遗传性代谢缺陷');
+d.add(789,760,'H0729.内分泌系统疾病/代谢异常与营养支持领域相关新技术','javascript:change(\'H0729\');','内分泌系统疾病/代谢异常与营养支持领域相关新技术');
+d.add(790,760,'H0730.内分泌系统疾病/代谢异常与营养支持其他科学问题','javascript:change(\'H0730\');','内分泌系统疾病/代谢异常与营养支持其他科学问题');
+d.add(791,627,'H08.血液系统','javascript:change(\'H08\');','血液系统');
+d.add(792,791,'H0801.造血、造血调控与造血微环境异常','javascript:change(\'H0801\');','造血、造血调控与造血微环境异常');
+d.add(793,791,'H0802.造血相关器官（肝脏/脾脏/胸腺）结构及功能异常','javascript:change(\'H0802\');','造血相关器官（肝脏/脾脏/胸腺）结构及功能异常');
+d.add(794,791,'H0803.红细胞异常及相关疾病','javascript:change(\'H0803\');','红细胞异常及相关疾病');
+d.add(795,791,'H0804.白细胞异常及相关疾病','javascript:change(\'H0804\');','白细胞异常及相关疾病');
+d.add(796,791,'H0805.血小板异常及相关疾病','javascript:change(\'H0805\');','血小板异常及相关疾病');
+d.add(797,791,'H0806.再生障碍性贫血和骨髓衰竭','javascript:change(\'H0806\');','再生障碍性贫血和骨髓衰竭');
+d.add(798,791,'H0807.骨髓增生异常综合征','javascript:change(\'H0807\');','骨髓增生异常综合征');
+d.add(799,791,'H0808.骨髓增殖性疾病','javascript:change(\'H0808\');','骨髓增殖性疾病');
+d.add(800,791,'H0809.血液系统免疫相关疾病','javascript:change(\'H0809\');','血液系统免疫相关疾病');
+d.add(801,791,'H0810.血液系统感染性疾病','javascript:change(\'H0810\');','血液系统感染性疾病');
+d.add(802,791,'H0811.出血、凝血与血栓','javascript:change(\'H0811\');','出血、凝血与血栓');
+d.add(803,791,'H0812.白血病','javascript:change(\'H0812\');','白血病');
+d.add(804,791,'H0813.造血干细胞移植','javascript:change(\'H0813\');','造血干细胞移植');
+d.add(805,791,'H0814.血型与输血','javascript:change(\'H0814\');','血型与输血');
+d.add(806,791,'H0815.遗传性血液病','javascript:change(\'H0815\');','遗传性血液病');
+d.add(807,791,'H0816.血液系统疾病诊疗新技术','javascript:change(\'H0816\');','血液系统疾病诊疗新技术');
+d.add(808,791,'H0817.血液系统疾病其他科学问题','javascript:change(\'H0817\');','血液系统疾病其他科学问题');
+d.add(809,627,'H09.神经系统和精神疾病','javascript:change(\'H09\');','神经系统和精神疾病');
+d.add(810,809,'H0901.意识障碍','javascript:change(\'H0901\');','意识障碍');
+d.add(811,809,'H0902.认知功能障碍','javascript:change(\'H0902\');','认知功能障碍');
+d.add(812,809,'H0903.躯体感觉、疼痛与镇痛','javascript:change(\'H0903\');','躯体感觉、疼痛与镇痛');
+d.add(813,809,'H0904.运动调节与运动障碍','javascript:change(\'H0904\');','运动调节与运动障碍');
+d.add(814,809,'H0905.神经发育、遗传、代谢相关疾病','javascript:change(\'H0905\');','神经发育、遗传、代谢相关疾病');
+d.add(815,809,'H0906.脑血管结构、功能异常及相关疾病','javascript:change(\'H0906\');','脑血管结构、功能异常及相关疾病');
+d.add(816,809,'H0907.神经免疫调节异常及神经免疫相关疾病','javascript:change(\'H0907\');','神经免疫调节异常及神经免疫相关疾病');
+d.add(817,809,'H0908.神经系统屏障和脑脊液异常及相关疾病','javascript:change(\'H0908\');','神经系统屏障和脑脊液异常及相关疾病');
+d.add(818,809,'H0909.神经系统炎症及感染性疾病','javascript:change(\'H0909\');','神经系统炎症及感染性疾病');
+d.add(819,809,'H0910.脑、脊髓、周围神经损伤及修复','javascript:change(\'H0910\');','脑、脊髓、周围神经损伤及修复');
+d.add(820,809,'H0911.周围神经、神经-肌肉接头、肌肉、自主神经疾病','javascript:change(\'H0911\');','周围神经、神经-肌肉接头、肌肉、自主神经疾病');
+d.add(821,809,'H0912.神经变性、再生及相关疾病','javascript:change(\'H0912\');','神经变性、再生及相关疾病');
+d.add(822,809,'H0913.神经电活动异常与发作性疾病','javascript:change(\'H0913\');','神经电活动异常与发作性疾病');
+d.add(823,809,'H0914.脑功能保护、治疗与康复','javascript:change(\'H0914\');','脑功能保护、治疗与康复');
+d.add(824,809,'H0915.节律调控与节律紊乱','javascript:change(\'H0915\');','节律调控与节律紊乱');
+d.add(825,809,'H0916.睡眠与睡眠障碍','javascript:change(\'H0916\');','睡眠与睡眠障碍');
+d.add(826,809,'H0917.器质性精神疾病','javascript:change(\'H0917\');','器质性精神疾病');
+d.add(827,809,'H0918.物质依赖和其他成瘾性障碍','javascript:change(\'H0918\');','物质依赖和其他成瘾性障碍');
+d.add(828,809,'H0919.精神分裂症和其他精神障碍','javascript:change(\'H0919\');','精神分裂症和其他精神障碍');
+d.add(829,809,'H0920.神经症和应激相关障碍','javascript:change(\'H0920\');','神经症和应激相关障碍');
+d.add(830,809,'H0921.心境障碍、心理生理障碍和心身疾病','javascript:change(\'H0921\');','心境障碍、心理生理障碍和心身疾病');
+d.add(831,809,'H0922.人格障碍、冲动控制障碍和性心理异常','javascript:change(\'H0922\');','人格障碍、冲动控制障碍和性心理异常');
+d.add(832,809,'H0923.儿童和青少年精神障碍','javascript:change(\'H0923\');','儿童和青少年精神障碍');
+d.add(833,809,'H0924.其他精神障碍与精神卫生问题','javascript:change(\'H0924\');','其他精神障碍与精神卫生问题');
+d.add(834,809,'H0925.精神疾病的心理测量和评估','javascript:change(\'H0925\');','精神疾病的心理测量和评估');
+d.add(835,809,'H0926.心理咨询与心理治疗','javascript:change(\'H0926\');','心理咨询与心理治疗');
+d.add(836,809,'H0927.危机干预','javascript:change(\'H0927\');','危机干预');
+d.add(837,809,'H0928.神经系统和精神疾病诊疗新技术','javascript:change(\'H0928\');','神经系统和精神疾病诊疗新技术');
+d.add(838,809,'H0929.神经系统和精神疾病其他科学问题','javascript:change(\'H0929\');','神经系统和精神疾病其他科学问题');
+d.add(839,627,'H10.医学免疫学','javascript:change(\'H10\');','医学免疫学');
+d.add(840,839,'H1001.免疫器官/组织/细胞的发育分化异常','javascript:change(\'H1001\');','免疫器官/组织/细胞的发育分化异常');
+d.add(841,839,'H1002.免疫应答异常','javascript:change(\'H1002\');','免疫应答异常');
+d.add(842,839,'H1003.免疫反应相关因子与疾病','javascript:change(\'H1003\');','免疫反应相关因子与疾病');
+d.add(843,839,'H1004.免疫识别/免疫耐受/免疫调节异常','javascript:change(\'H1004\');','免疫识别/免疫耐受/免疫调节异常');
+d.add(844,839,'H1005.炎症、感染与免疫','javascript:change(\'H1005\');','炎症、感染与免疫');
+d.add(845,839,'H1006.器官移植与移植免疫','javascript:change(\'H1006\');','器官移植与移植免疫');
+d.add(846,839,'H1007.超敏反应性疾病','javascript:change(\'H1007\');','超敏反应性疾病');
+d.add(847,839,'H1008.自身免疫性疾病','javascript:change(\'H1008\');','自身免疫性疾病');
+d.add(848,839,'H1009.继发及原发性免疫缺陷性疾病','javascript:change(\'H1009\');','继发及原发性免疫缺陷性疾病');
+d.add(849,839,'H1010.固有免疫异常','javascript:change(\'H1010\');','固有免疫异常');
+d.add(850,839,'H1011.神经内分泌免疫异常','javascript:change(\'H1011\');','神经内分泌免疫异常');
+d.add(851,839,'H1012.黏膜免疫疾病','javascript:change(\'H1012\');','黏膜免疫疾病');
+d.add(852,839,'H1013.疾病的系统免疫学','javascript:change(\'H1013\');','疾病的系统免疫学');
+d.add(853,839,'H1014.疫苗和佐剂研究/接种/免疫防治','javascript:change(\'H1014\');','疫苗和佐剂研究/接种/免疫防治');
+d.add(854,839,'H1015.免疫相关疾病诊疗新技术','javascript:change(\'H1015\');','免疫相关疾病诊疗新技术');
+d.add(855,839,'H1016.免疫相关疾病其他科学问题','javascript:change(\'H1016\');','免疫相关疾病其他科学问题');
+d.add(856,627,'H11.皮肤及其附属器','javascript:change(\'H11\');','皮肤及其附属器');
+d.add(857,856,'H1101.皮肤形态、结构和功能异常','javascript:change(\'H1101\');','皮肤形态、结构和功能异常');
+d.add(858,856,'H1102.皮肤遗传及相关疾病','javascript:change(\'H1102\');','皮肤遗传及相关疾病');
+d.add(859,856,'H1103.皮肤免疫性疾病','javascript:change(\'H1103\');','皮肤免疫性疾病');
+d.add(860,856,'H1104.皮肤感染','javascript:change(\'H1104\');','皮肤感染');
+d.add(861,856,'H1105.非感染性皮肤病','javascript:change(\'H1105\');','非感染性皮肤病');
+d.add(862,856,'H1106.皮肤附属器及相关疾病','javascript:change(\'H1106\');','皮肤附属器及相关疾病');
+d.add(863,856,'H1107.皮肤及其附属器疾病诊疗新技术','javascript:change(\'H1107\');','皮肤及其附属器疾病诊疗新技术');
+d.add(864,856,'H1108.皮肤及其附属器疾病其他科学问题','javascript:change(\'H1108\');','皮肤及其附属器疾病其他科学问题');
+d.add(865,627,'H12.眼科学','javascript:change(\'H12\');','眼科学');
+d.add(866,865,'H1201.角膜及眼表疾病','javascript:change(\'H1201\');','角膜及眼表疾病');
+d.add(867,865,'H1202.晶状体与白内障','javascript:change(\'H1202\');','晶状体与白内障');
+d.add(868,865,'H1203.巩膜、葡萄膜、眼免疫','javascript:change(\'H1203\');','巩膜、葡萄膜、眼免疫');
+d.add(869,865,'H1204.青光眼、视神经及视路相关疾病','javascript:change(\'H1204\');','青光眼、视神经及视路相关疾病');
+d.add(870,865,'H1205.视网膜、脉络膜及玻璃体相关疾病','javascript:change(\'H1205\');','视网膜、脉络膜及玻璃体相关疾病');
+d.add(871,865,'H1206.视觉、视光学与近视、弱视及眼肌疾病','javascript:change(\'H1206\');','视觉、视光学与近视、弱视及眼肌疾病');
+d.add(872,865,'H1207.全身疾病眼部表现、眼眶疾病','javascript:change(\'H1207\');','全身疾病眼部表现、眼眶疾病');
+d.add(873,865,'H1208.眼遗传性疾病','javascript:change(\'H1208\');','眼遗传性疾病');
+d.add(874,865,'H1209.眼组织移植','javascript:change(\'H1209\');','眼组织移植');
+d.add(875,865,'H1210.眼科疾病诊疗新技术','javascript:change(\'H1210\');','眼科疾病诊疗新技术');
+d.add(876,865,'H1211.眼科疾病其他科学问题','javascript:change(\'H1211\');','眼科疾病其他科学问题');
+d.add(877,627,'H13.耳鼻咽喉头颈科学','javascript:change(\'H13\');','耳鼻咽喉头颈科学');
+d.add(878,877,'H1301.嗅觉、鼻及前颅底疾病','javascript:change(\'H1301\');','嗅觉、鼻及前颅底疾病');
+d.add(879,877,'H1302.咽喉及颈部疾病','javascript:change(\'H1302\');','咽喉及颈部疾病');
+d.add(880,877,'H1303.耳及侧颅底疾病','javascript:change(\'H1303\');','耳及侧颅底疾病');
+d.add(881,877,'H1304.听觉异常与平衡障碍','javascript:change(\'H1304\');','听觉异常与平衡障碍');
+d.add(882,877,'H1305.耳鼻咽喉遗传与发育相关疾病','javascript:change(\'H1305\');','耳鼻咽喉遗传与发育相关疾病');
+d.add(883,877,'H1306.耳鼻咽喉疾病诊疗新技术','javascript:change(\'H1306\');','耳鼻咽喉疾病诊疗新技术');
+d.add(884,877,'H1307.耳鼻咽喉疾病其他科学问题','javascript:change(\'H1307\');','耳鼻咽喉疾病其他科学问题');
+d.add(885,627,'H14.口腔颅颌面科学','javascript:change(\'H14\');','口腔颅颌面科学');
+d.add(886,885,'H1401.口腔颅颌面组织生长发育及牙再生','javascript:change(\'H1401\');','口腔颅颌面组织生长发育及牙再生');
+d.add(887,885,'H1402.颅颌面部骨、软骨组织的研究','javascript:change(\'H1402\');','颅颌面部骨、软骨组织的研究');
+d.add(888,885,'H1403.口腔颌面部遗传性疾病和发育畸形及软组织缺损修复','javascript:change(\'H1403\');','口腔颌面部遗传性疾病和发育畸形及软组织缺损修复');
+d.add(889,885,'H1404.牙体牙髓及根尖周组织疾病','javascript:change(\'H1404\');','牙体牙髓及根尖周组织疾病');
+d.add(890,885,'H1405.牙周及口腔黏膜疾病','javascript:change(\'H1405\');','牙周及口腔黏膜疾病');
+d.add(891,885,'H1406.唾液、涎腺疾病、口腔颌面脉管神经及颌骨良性疾病','javascript:change(\'H1406\');','唾液、涎腺疾病、口腔颌面脉管神经及颌骨良性疾病');
+d.add(892,885,'H1407.味觉、口颌面疼痛、咬合及颞下颌关节疾病','javascript:change(\'H1407\');','味觉、口颌面疼痛、咬合及颞下颌关节疾病');
+d.add(893,885,'H1408.牙缺损、缺失及牙颌畸形的修复与矫治','javascript:change(\'H1408\');','牙缺损、缺失及牙颌畸形的修复与矫治');
+d.add(894,885,'H1409.口腔颌面组织生物力学和生物材料','javascript:change(\'H1409\');','口腔颌面组织生物力学和生物材料');
+d.add(895,885,'H1410.口腔颌面疾病诊疗新技术','javascript:change(\'H1410\');','口腔颌面疾病诊疗新技术');
+d.add(896,885,'H1411.口腔颌面疾病其他科学问题','javascript:change(\'H1411\');','口腔颌面疾病其他科学问题');
+d.add(897,627,'H15.急重症医学/创伤/烧伤/整形','javascript:change(\'H15\');','急重症医学/创伤/烧伤/整形');
+d.add(898,897,'H1501.心肺复苏','javascript:change(\'H1501\');','心肺复苏');
+d.add(899,897,'H1502.多脏器衰竭','javascript:change(\'H1502\');','多脏器衰竭');
+d.add(900,897,'H1503.中毒','javascript:change(\'H1503\');','中毒');
+d.add(901,897,'H1504.创伤','javascript:change(\'H1504\');','创伤');
+d.add(902,897,'H1505.烧伤','javascript:change(\'H1505\');','烧伤');
+d.add(903,897,'H1506.冻伤','javascript:change(\'H1506\');','冻伤');
+d.add(904,897,'H1507.创面愈合与瘢痕','javascript:change(\'H1507\');','创面愈合与瘢痕');
+d.add(905,897,'H1508.体表组织器官畸形、损伤与修复、再生','javascript:change(\'H1508\');','体表组织器官畸形、损伤与修复、再生');
+d.add(906,897,'H1509.体表组织器官移植与再造','javascript:change(\'H1509\');','体表组织器官移植与再造');
+d.add(907,897,'H1510.颅颌面畸形与矫正','javascript:change(\'H1510\');','颅颌面畸形与矫正');
+d.add(908,897,'H1511.急重症医学/创伤/烧伤/整形其他科学问题','javascript:change(\'H1511\');','急重症医学/创伤/烧伤/整形其他科学问题');
+d.add(909,627,'H16.肿瘤学','javascript:change(\'H16\');','肿瘤学');
+d.add(910,627,'H16.肿瘤学','javascript:change(\'H16\');','肿瘤学');
+d.add(911,910,'H1601.肿瘤病因','javascript:change(\'H1601\');','肿瘤病因');
+d.add(912,910,'H1602.肿瘤发生','javascript:change(\'H1602\');','肿瘤发生');
+d.add(913,910,'H1603.肿瘤遗传与表观遗传','javascript:change(\'H1603\');','肿瘤遗传与表观遗传');
+d.add(914,910,'H1604.肿瘤免疫','javascript:change(\'H1604\');','肿瘤免疫');
+d.add(915,910,'H1605.肿瘤预防','javascript:change(\'H1605\');','肿瘤预防');
+d.add(916,910,'H1606.肿瘤复发与转移','javascript:change(\'H1606\');','肿瘤复发与转移');
+d.add(917,910,'H1607.肿瘤干细胞','javascript:change(\'H1607\');','肿瘤干细胞');
+d.add(918,910,'H1608.肿瘤诊断','javascript:change(\'H1608\');','肿瘤诊断');
+d.add(919,910,'H1609.肿瘤化学药物治疗','javascript:change(\'H1609\');','肿瘤化学药物治疗');
+d.add(920,910,'H1610.肿瘤物理治疗','javascript:change(\'H1610\');','肿瘤物理治疗');
+d.add(921,910,'H1611.肿瘤生物治疗','javascript:change(\'H1611\');','肿瘤生物治疗');
+d.add(922,910,'H1612.肿瘤综合治疗','javascript:change(\'H1612\');','肿瘤综合治疗');
+d.add(923,910,'H1613.肿瘤康复（包括社会心理康复）','javascript:change(\'H1613\');','肿瘤康复（包括社会心理康复）');
+d.add(924,910,'H1614.肿瘤研究体系新技术','javascript:change(\'H1614\');','肿瘤研究体系新技术');
+d.add(925,910,'H1615.呼吸系统肿瘤','javascript:change(\'H1615\');','呼吸系统肿瘤');
+d.add(926,910,'H1616.血液淋巴肿瘤（白血病除外）','javascript:change(\'H1616\');','血液淋巴肿瘤（白血病除外）');
+d.add(927,910,'H1617.消化系统肿瘤','javascript:change(\'H1617\');','消化系统肿瘤');
+d.add(928,910,'H1618.神经系统肿瘤（含特殊感受器肿瘤）','javascript:change(\'H1618\');','神经系统肿瘤（含特殊感受器肿瘤）');
+d.add(929,910,'H1619.泌尿系统肿瘤','javascript:change(\'H1619\');','泌尿系统肿瘤');
+d.add(930,910,'H1620.男性生殖系统肿瘤','javascript:change(\'H1620\');','男性生殖系统肿瘤');
+d.add(931,910,'H1621.女性生殖系统肿瘤','javascript:change(\'H1621\');','女性生殖系统肿瘤');
+d.add(932,910,'H1622.乳腺肿瘤','javascript:change(\'H1622\');','乳腺肿瘤');
+d.add(933,910,'H1623.内分泌系统肿瘤','javascript:change(\'H1623\');','内分泌系统肿瘤');
+d.add(934,910,'H1624.骨与软组织肿瘤','javascript:change(\'H1624\');','骨与软组织肿瘤');
+d.add(935,910,'H1625.头颈部及颌面肿瘤','javascript:change(\'H1625\');','头颈部及颌面肿瘤');
+d.add(936,910,'H1626.皮肤、体表及其他部位肿瘤','javascript:change(\'H1626\');','皮肤、体表及其他部位肿瘤');
+d.add(937,627,'H17.康复医学','javascript:change(\'H17\');','康复医学');
+d.add(938,937,'H1701.康复医学','javascript:change(\'H1701\');','康复医学');
+d.add(939,627,'H18.影像医学与生物医学工程','javascript:change(\'H18\');','影像医学与生物医学工程');
+d.add(940,939,'H1801.磁共振结构成像与疾病诊断','javascript:change(\'H1801\');','磁共振结构成像与疾病诊断');
+d.add(941,939,'H1802.fMRI与脑、脊髓功能异常检测','javascript:change(\'H1802\');','fMRI与脑、脊髓功能异常检测');
+d.add(942,939,'H1803.磁共振成像技术与造影剂','javascript:change(\'H1803\');','磁共振成像技术与造影剂');
+d.add(943,939,'H1804.X线与CT、电子与离子束、放射诊断与质量控制','javascript:change(\'H1804\');','X线与CT、电子与离子束、放射诊断与质量控制');
+d.add(944,939,'H1805.医学超声与声学造影剂','javascript:change(\'H1805\');','医学超声与声学造影剂');
+d.add(945,939,'H1806.核医学','javascript:change(\'H1806\');','核医学');
+d.add(946,939,'H1807.医学光子学、光谱与光学成像','javascript:change(\'H1807\');','医学光子学、光谱与光学成像');
+d.add(947,939,'H1808.分子影像与分子探针','javascript:change(\'H1808\');','分子影像与分子探针');
+d.add(948,939,'H1809.医学图像数据处理与分析','javascript:change(\'H1809\');','医学图像数据处理与分析');
+d.add(949,939,'H1810.脑电图、脑磁图与脑机交互','javascript:change(\'H1810\');','脑电图、脑磁图与脑机交互');
+d.add(950,939,'H1811.人体医学信号检测、识别、处理与分析','javascript:change(\'H1811\');','人体医学信号检测、识别、处理与分析');
+d.add(951,939,'H1812.生物医学传感','javascript:change(\'H1812\');','生物医学传感');
+d.add(952,939,'H1813.生物医学系统建模及仿真','javascript:change(\'H1813\');','生物医学系统建模及仿真');
+d.add(953,939,'H1814.医学信息系统与远程医疗','javascript:change(\'H1814\');','医学信息系统与远程医疗');
+d.add(954,939,'H1815.治疗计划、导航与机器人辅助','javascript:change(\'H1815\');','治疗计划、导航与机器人辅助');
+d.add(955,939,'H1816.介入医学与工程','javascript:change(\'H1816\');','介入医学与工程');
+d.add(956,939,'H1817.康复工程与智能控制','javascript:change(\'H1817\');','康复工程与智能控制');
+d.add(957,939,'H1818.药物、基因载体系统','javascript:change(\'H1818\');','药物、基因载体系统');
+d.add(958,939,'H1819.纳米医学','javascript:change(\'H1819\');','纳米医学');
+d.add(959,939,'H1820.医用生物材料与植入科学','javascript:change(\'H1820\');','医用生物材料与植入科学');
+d.add(960,939,'H1821.细胞移植、组织再生与生物反应器','javascript:change(\'H1821\');','细胞移植、组织再生与生物反应器');
+d.add(961,939,'H1822.组织工程与再生医学','javascript:change(\'H1822\');','组织工程与再生医学');
+d.add(962,939,'H1823.人工器官与特殊感受器仿生医学','javascript:change(\'H1823\');','人工器官与特殊感受器仿生医学');
+d.add(963,939,'H1824.电磁与物理治疗','javascript:change(\'H1824\');','电磁与物理治疗');
+d.add(964,939,'H1825.用于检测、分析、成像及治疗的医学器件和仪器','javascript:change(\'H1825\');','用于检测、分析、成像及治疗的医学器件和仪器');
+d.add(965,939,'H1826.影像医学与生物医学工程其他科学问题','javascript:change(\'H1826\');','影像医学与生物医学工程其他科学问题');
+d.add(966,627,'H19.医学病原微生物与感染','javascript:change(\'H19\');','医学病原微生物与感染');
+d.add(967,966,'H1901.病原细菌、细菌感染与宿主免疫','javascript:change(\'H1901\');','病原细菌、细菌感染与宿主免疫');
+d.add(968,966,'H1902.病原放线菌、放线菌感染与宿主免疫','javascript:change(\'H1902\');','病原放线菌、放线菌感染与宿主免疫');
+d.add(969,966,'H1903.病原真菌、真菌感染与宿主免疫','javascript:change(\'H1903\');','病原真菌、真菌感染与宿主免疫');
+d.add(970,966,'H1904.病毒、病毒感染与宿主免疫','javascript:change(\'H1904\');','病毒、病毒感染与宿主免疫');
+d.add(971,966,'H1905.其他病原微生物及感染与宿主免疫','javascript:change(\'H1905\');','其他病原微生物及感染与宿主免疫');
+d.add(972,966,'H1906.寄生虫、寄生虫感染与宿主免疫','javascript:change(\'H1906\');','寄生虫、寄生虫感染与宿主免疫');
+d.add(973,966,'H1907.传染病媒介生物','javascript:change(\'H1907\');','传染病媒介生物');
+d.add(974,966,'H1908.病原微生物变异与耐药','javascript:change(\'H1908\');','病原微生物变异与耐药');
+d.add(975,966,'H1909.医院获得性感染','javascript:change(\'H1909\');','医院获得性感染');
+d.add(976,966,'H1910.性传播疾病','javascript:change(\'H1910\');','性传播疾病');
+d.add(977,966,'H1911.病原微生物与感染研究与诊疗新技术','javascript:change(\'H1911\');','病原微生物与感染研究与诊疗新技术');
+d.add(978,966,'H1912.病原微生物与感染其他科学问题','javascript:change(\'H1912\');','病原微生物与感染其他科学问题');
+d.add(979,627,'H20.检验医学','javascript:change(\'H20\');','检验医学');
+d.add(980,979,'H2001.临床生物化学检验','javascript:change(\'H2001\');','临床生物化学检验');
+d.add(981,979,'H2002.临床微生物学检验','javascript:change(\'H2002\');','临床微生物学检验');
+d.add(982,979,'H2003.临床细胞学和血液学检验','javascript:change(\'H2003\');','临床细胞学和血液学检验');
+d.add(983,979,'H2004.临床免疫学检验','javascript:change(\'H2004\');','临床免疫学检验');
+d.add(984,979,'H2005.临床分子生物学检验','javascript:change(\'H2005\');','临床分子生物学检验');
+d.add(985,979,'H2006.临床检验新技术','javascript:change(\'H2006\');','临床检验新技术');
+d.add(986,979,'H2007.检验医学其他科学问题','javascript:change(\'H2007\');','检验医学其他科学问题');
+d.add(987,627,'H21.特种医学','javascript:change(\'H21\');','特种医学');
+d.add(988,987,'H2101.特种医学(航空、航天、航海、潜水、高原、极地等极端环境)','javascript:change(\'H2101\');','特种医学(航空、航天、航海、潜水、高原、极地等极端环境)');
+d.add(989,627,'H22.放射医学','javascript:change(\'H22\');','放射医学');
+d.add(990,989,'H2201.放射医学','javascript:change(\'H2201\');','放射医学');
+d.add(991,627,'H23.法医学','javascript:change(\'H23\');','法医学');
+d.add(992,991,'H2301.法医毒理、病理及毒物分析','javascript:change(\'H2301\');','法医毒理、病理及毒物分析');
+d.add(993,991,'H2302.法医物证学、法医人类学','javascript:change(\'H2302\');','法医物证学、法医人类学');
+d.add(994,991,'H2303.法医精神病学及法医临床学','javascript:change(\'H2303\');','法医精神病学及法医临床学');
+d.add(995,991,'H2304.法医学其他科学问题','javascript:change(\'H2304\');','法医学其他科学问题');
+d.add(996,627,'H24.地方病学/职业病学','javascript:change(\'H24\');','地方病学/职业病学');
+d.add(997,996,'H2401.地方病学','javascript:change(\'H2401\');','地方病学');
+d.add(998,996,'H2402.职业病学','javascript:change(\'H2402\');','职业病学');
+d.add(999,627,'H25.老年医学','javascript:change(\'H25\');','老年医学');
+d.add(1000,999,'H2501.老年医学','javascript:change(\'H2501\');','老年医学');
+d.add(1001,627,'H26.预防医学','javascript:change(\'H26\');','预防医学');
+d.add(1002,1001,'H2601.环境卫生','javascript:change(\'H2601\');','环境卫生');
+d.add(1003,1001,'H2602.职业卫生','javascript:change(\'H2602\');','职业卫生');
+d.add(1004,1001,'H2603.人类营养','javascript:change(\'H2603\');','人类营养');
+d.add(1005,1001,'H2604.食品卫生','javascript:change(\'H2604\');','食品卫生');
+d.add(1006,1001,'H2605.妇幼保健','javascript:change(\'H2605\');','妇幼保健');
+d.add(1007,1001,'H2606.儿童少年卫生','javascript:change(\'H2606\');','儿童少年卫生');
+d.add(1008,1001,'H2607.卫生毒理','javascript:change(\'H2607\');','卫生毒理');
+d.add(1009,1001,'H2608.卫生分析化学','javascript:change(\'H2608\');','卫生分析化学');
+d.add(1010,1001,'H2609.传染病流行病学','javascript:change(\'H2609\');','传染病流行病学');
+d.add(1011,1001,'H2610.非传染病流行病学','javascript:change(\'H2610\');','非传染病流行病学');
+d.add(1012,1001,'H2611.流行病学方法与卫生统计','javascript:change(\'H2611\');','流行病学方法与卫生统计');
+d.add(1013,1001,'H2612.预防医学其他科学问题','javascript:change(\'H2612\');','预防医学其他科学问题');
+d.add(1014,627,'H27.中医学','javascript:change(\'H27\');','中医学');
+d.add(1015,1014,'H2701.脏腑气血津液体质','javascript:change(\'H2701\');','脏腑气血津液体质');
+d.add(1016,1014,'H2702.病因病机','javascript:change(\'H2702\');','病因病机');
+d.add(1017,1014,'H2703.证候基础','javascript:change(\'H2703\');','证候基础');
+d.add(1018,1014,'H2704.治则与治法','javascript:change(\'H2704\');','治则与治法');
+d.add(1019,1014,'H2705.中医方剂','javascript:change(\'H2705\');','中医方剂');
+d.add(1020,1014,'H2706.中医诊断','javascript:change(\'H2706\');','中医诊断');
+d.add(1021,1014,'H2707.经络与腧穴','javascript:change(\'H2707\');','经络与腧穴');
+d.add(1022,1014,'H2708.中医内科','javascript:change(\'H2708\');','中医内科');
+d.add(1023,1014,'H2709.中医外科','javascript:change(\'H2709\');','中医外科');
+d.add(1024,1014,'H2710.中医骨伤科','javascript:change(\'H2710\');','中医骨伤科');
+d.add(1025,1014,'H2711.中医妇科','javascript:change(\'H2711\');','中医妇科');
+d.add(1026,1014,'H2712.中医儿科','javascript:change(\'H2712\');','中医儿科');
+d.add(1027,1014,'H2713.中医眼科','javascript:change(\'H2713\');','中医眼科');
+d.add(1028,1014,'H2714.中医耳鼻喉科','javascript:change(\'H2714\');','中医耳鼻喉科');
+d.add(1029,1014,'H2715.中医口腔科','javascript:change(\'H2715\');','中医口腔科');
+d.add(1030,1014,'H2716.中医老年病','javascript:change(\'H2716\');','中医老年病');
+d.add(1031,1014,'H2717.中医养生与康复','javascript:change(\'H2717\');','中医养生与康复');
+d.add(1032,1014,'H2718.中医针灸','javascript:change(\'H2718\');','中医针灸');
+d.add(1033,1014,'H2719.按摩推拿','javascript:change(\'H2719\');','按摩推拿');
+d.add(1034,1014,'H2720.民族医学','javascript:change(\'H2720\');','民族医学');
+d.add(1035,1014,'H2721.中医学其他科学问题','javascript:change(\'H2721\');','中医学其他科学问题');
+d.add(1036,627,'H28.中药学','javascript:change(\'H28\');','中药学');
+d.add(1037,1036,'H2801.中药资源','javascript:change(\'H2801\');','中药资源');
+d.add(1038,1036,'H2802.中药鉴定','javascript:change(\'H2802\');','中药鉴定');
+d.add(1039,1036,'H2803.中药药效物质','javascript:change(\'H2803\');','中药药效物质');
+d.add(1040,1036,'H2804.中药质量评价','javascript:change(\'H2804\');','中药质量评价');
+d.add(1041,1036,'H2805.中药炮制','javascript:change(\'H2805\');','中药炮制');
+d.add(1042,1036,'H2806.中药制剂','javascript:change(\'H2806\');','中药制剂');
+d.add(1043,1036,'H2807.中药药性理论','javascript:change(\'H2807\');','中药药性理论');
+d.add(1044,1036,'H2808.中药神经精神药理','javascript:change(\'H2808\');','中药神经精神药理');
+d.add(1045,1036,'H2809.中药心脑血管药理','javascript:change(\'H2809\');','中药心脑血管药理');
+d.add(1046,1036,'H2810.中药抗肿瘤药理','javascript:change(\'H2810\');','中药抗肿瘤药理');
+d.add(1047,1036,'H2811.中药内分泌及代谢药理','javascript:change(\'H2811\');','中药内分泌及代谢药理');
+d.add(1048,1036,'H2812.中药抗炎与免疫药理','javascript:change(\'H2812\');','中药抗炎与免疫药理');
+d.add(1049,1036,'H2813.中药抗病毒与感染药理','javascript:change(\'H2813\');','中药抗病毒与感染药理');
+d.add(1050,1036,'H2814.中药消化与呼吸药理','javascript:change(\'H2814\');','中药消化与呼吸药理');
+d.add(1051,1036,'H2815.中药泌尿与生殖药理','javascript:change(\'H2815\');','中药泌尿与生殖药理');
+d.add(1052,1036,'H2816.中药药代动力学','javascript:change(\'H2816\');','中药药代动力学');
+d.add(1053,1036,'H2817.中药毒理','javascript:change(\'H2817\');','中药毒理');
+d.add(1054,1036,'H2818.民族药学','javascript:change(\'H2818\');','民族药学');
+d.add(1055,1036,'H2819.中药学其他科学问题','javascript:change(\'H2819\');','中药学其他科学问题');
+d.add(1056,627,'H29.中西医结合','javascript:change(\'H29\');','中西医结合');
+d.add(1057,1056,'H2901.中西医结合基础理论','javascript:change(\'H2901\');','中西医结合基础理论');
+d.add(1058,1056,'H2902.中西医结合临床基础','javascript:change(\'H2902\');','中西医结合临床基础');
+d.add(1059,1056,'H2903.中医药学研究新技术和新方法','javascript:change(\'H2903\');','中医药学研究新技术和新方法');
+d.add(1060,627,'H30.药物学','javascript:change(\'H30\');','药物学');
+d.add(1061,1060,'H3001.合成药物化学','javascript:change(\'H3001\');','合成药物化学');
+d.add(1062,1060,'H3002.天然药物化学','javascript:change(\'H3002\');','天然药物化学');
+d.add(1063,1060,'H3003.微生物药物','javascript:change(\'H3003\');','微生物药物');
+d.add(1064,1060,'H3004.生物技术药物','javascript:change(\'H3004\');','生物技术药物');
+d.add(1065,1060,'H3005.海洋药物','javascript:change(\'H3005\');','海洋药物');
+d.add(1066,1060,'H3006.特种药物','javascript:change(\'H3006\');','特种药物');
+d.add(1067,1060,'H3007.药物设计与药物信息','javascript:change(\'H3007\');','药物设计与药物信息');
+d.add(1068,1060,'H3008.药剂学','javascript:change(\'H3008\');','药剂学');
+d.add(1069,1060,'H3009.药物材料','javascript:change(\'H3009\');','药物材料');
+d.add(1070,1060,'H3010.药物分析','javascript:change(\'H3010\');','药物分析');
+d.add(1071,1060,'H3011.药物资源','javascript:change(\'H3011\');','药物资源');
+d.add(1072,1060,'H3012.药物学其他科学问题','javascript:change(\'H3012\');','药物学其他科学问题');
+d.add(1073,627,'H31.药理学','javascript:change(\'H31\');','药理学');
+d.add(1074,1073,'H3101.神经精神药物药理','javascript:change(\'H3101\');','神经精神药物药理');
+d.add(1075,1073,'H3102.心脑血管药物药理','javascript:change(\'H3102\');','心脑血管药物药理');
+d.add(1076,1073,'H3103.老年病药物药理','javascript:change(\'H3103\');','老年病药物药理');
+d.add(1077,1073,'H3104.抗炎与免疫药物药理','javascript:change(\'H3104\');','抗炎与免疫药物药理');
+d.add(1078,1073,'H3105.抗肿瘤药物药理','javascript:change(\'H3105\');','抗肿瘤药物药理');
+d.add(1079,1073,'H3106.抗感染药物药理','javascript:change(\'H3106\');','抗感染药物药理');
+d.add(1080,1073,'H3107.代谢性疾病药物药理','javascript:change(\'H3107\');','代谢性疾病药物药理');
+d.add(1081,1073,'H3108.消化与呼吸系统药物药理','javascript:change(\'H3108\');','消化与呼吸系统药物药理');
+d.add(1082,1073,'H3109.血液、泌尿与生殖系统药物药理','javascript:change(\'H3109\');','血液、泌尿与生殖系统药物药理');
+d.add(1083,1073,'H3110.药物代谢与药物动力学','javascript:change(\'H3110\');','药物代谢与药物动力学');
+d.add(1084,1073,'H3111.临床药理','javascript:change(\'H3111\');','临床药理');
+d.add(1085,1073,'H3112.药物毒理','javascript:change(\'H3112\');','药物毒理');
+d.add(1086,1073,'H3113.药理学其他科学问题','javascript:change(\'H3113\');','药理学其他科学问题');
+d.add(1087,0,'J.计划局','javascript:change(\'J\');','计划局');
+d.add(1088,1087,'J01.国家基础人才培养基金','javascript:change(\'J01\');','国家基础人才培养基金');
+d.add(1089,1088,'J0101.数学','javascript:change(\'J0101\');','数学');
+d.add(1090,1088,'J0102.力学','javascript:change(\'J0102\');','力学');
+d.add(1091,1088,'J0103.物理学（含天文学和大理科班）','javascript:change(\'J0103\');','物理学（含天文学和大理科班）');
+d.add(1092,1088,'J0104.化学','javascript:change(\'J0104\');','化学');
+d.add(1093,1088,'J0105.地学','javascript:change(\'J0105\');','地学');
+d.add(1094,1088,'J0106.生物学','javascript:change(\'J0106\');','生物学');
+d.add(1095,1088,'J0107.心理学','javascript:change(\'J0107\');','心理学');
+d.add(1096,1088,'J0108.基础（中）医（药）学','javascript:change(\'J0108\');','基础（中）医（药）学');
+d.add(1097,1088,'J0109.特殊学科点','javascript:change(\'J0109\');','特殊学科点');
+d.add(1098,1087,'J02.青少年及软课题','javascript:change(\'J02\');','青少年及软课题');
+d.add(1099,1098,'J0201.青少年科技活动','javascript:change(\'J0201\');','青少年科技活动');
+d.add(1100,1098,'J0202.计划局软课题','javascript:change(\'J0202\');','计划局软课题');
+d.add(1101,1087,'J03.重点实验室','javascript:change(\'J03\');','重点实验室');
+d.add(1102,1087,'J04.计划局委主任基金','javascript:change(\'J04\');','计划局委主任基金');
+d.add(1103,0,'L.联合基金领域','javascript:change(\'L\');','联合基金领域');
+d.add(1104,1103,'L00.联合基金战略研究','javascript:change(\'L00\');','联合基金战略研究');
+d.add(1105,1104,'L0011.机械与运载工程技术领域','javascript:change(\'L0011\');','机械与运载工程技术领域');
+d.add(1106,1104,'L0012.信息与电子工程技术领域','javascript:change(\'L0012\');','信息与电子工程技术领域');
+d.add(1107,1104,'L0013.化工、冶金与材料工程技术领域','javascript:change(\'L0013\');','化工、冶金与材料工程技术领域');
+d.add(1108,1104,'L0014.能源与矿业工程技术领域','javascript:change(\'L0014\');','能源与矿业工程技术领域');
+d.add(1109,1104,'L0015.土木、水利与建筑材料工程技术领域','javascript:change(\'L0015\');','土木、水利与建筑材料工程技术领域');
+d.add(1110,1104,'L0016.环境与轻纺工程技术领域','javascript:change(\'L0016\');','环境与轻纺工程技术领域');
+d.add(1111,1104,'L0017.农业技术领域','javascript:change(\'L0017\');','农业技术领域');
+d.add(1112,1104,'L0018.医药卫生技术领域','javascript:change(\'L0018\');','医药卫生技术领域');
+d.add(1113,1103,'L01.农业领域','javascript:change(\'L01\');','农业领域');
+d.add(1114,1103,'L02.人口与健康领域','javascript:change(\'L02\');','人口与健康领域');
+d.add(1115,1103,'L03.资源与环境领域','javascript:change(\'L03\');','资源与环境领域');
+d.add(1116,1103,'L04.新材料与先进制造领域','javascript:change(\'L04\');','新材料与先进制造领域');
+d.add(1117,1103,'L05.电子信息领域','javascript:change(\'L05\');','电子信息领域');
+d.add(1118,1103,'L06.生物多样性保护领域','javascript:change(\'L06\');','生物多样性保护领域');
+d.add(1119,1103,'L07.矿产资源综合利用与新材料领域','javascript:change(\'L07\');','矿产资源综合利用与新材料领域');
+d.add(1120,1103,'L08.水资源与农业领域','javascript:change(\'L08\');','水资源与农业领域');
+d.add(1121,1103,'L09.矿产资源领域','javascript:change(\'L09\');','矿产资源领域');
+d.add(1122,1103,'L10.生物多样性与生物资源领域','javascript:change(\'L10\');','生物多样性与生物资源领域');
+d.add(1123,1103,'L11.新能源新材料领域','javascript:change(\'L11\');','新能源新材料领域');
+d.add(1124,1103,'L12.水产生物资源研究领域','javascript:change(\'L12\');','水产生物资源研究领域');
+d.add(1125,1103,'L13.食品安全检测技术领域','javascript:change(\'L13\');','食品安全检测技术领域');
+d.add(1126,0,'M.办公室','javascript:change(\'M\');','办公室');
+d.add(1127,1126,'M01.委办公室委主任基金','javascript:change(\'M01\');','委办公室委主任基金');
+d.add(1128,null,'R00.RGC项目','javascript:change(\'R00\');','RGC项目');
+d.add(1129,null,'S01.纪检监察审计局','javascript:change(\'S01\');','纪检监察审计局');
+d.add(1130,null,'Z01.政策局软课题','javascript:change(\'Z01\');','政策局软课题');
+
+
+		document.write(d);
+		</script>
+
+			    		</div>
+			    		<script>
+					    	//控制下拉菜单的显示
+							$(function() {
+								$("#applydom").click(function(e) {
+									e ? e.stopPropagation() : event.cancelBubble = true;
+								});
+								$("#applydom").click(function() {
+									$("#showdom").show();
+								});
+							});
+							
+							function change(param){
+								$("#applyCode").val(param);
+								$("#showdom").hide();
+							}
+					    </script>
+			    	</td>
+			        
+			    </tr>
+			    <script>
+			    	//控制下拉菜单的显示
+					$(function() {
+						$("#applyCode").click(function(e) {
+							e ? e.stopPropagation() : event.cancelBubble = true;
+						});
+						$("#applyCode").click(function() {
+							$("#showApplyCode").show();
+						});
+						$(document.body).click(function() {
+							$("#showApplyCode").hide();
+						});
+					})
+			    </script>
+			    <script>
+			    	function loadApp(){
+			    		var applyCode = $("#applyCode").val();
+			    		var xmlhttp = CreateXmlHttp();
+	            		
+						xmlhttp.onreadystatechange = function(){
+							if (xmlhttp.readyState == 4) {
+								if(xmlhttp.status == 200){
+									var obj = $("#showApplyCode");
+			    					obj.empty();
+			    					obj.append(xmlhttp.responseText);
+			    					document.getElementById("showApplyCode").style.display = 'block';
+									//alert(xmlhttp.responseText);
+								} else {
+									alert(xmlhttp.status);
+								}
+							}
+						};
+						xmlhttp.open("post","fundingProjectSearchAction!selectApplyCodes.action?applyCode="+applyCode,true);
+						xmlhttp.send(null);
+			    	}
+			    	
+			    	function valueToInput(valueId,value){
+			    		$("#"+valueId).val(value);
+			    	}
+			    </script>
+			    <tr>
+			    	<td align="right">资助类别：</td>
+			        <td><select name="fundingProject.grantCode" id="grantName" class="select1" style="width:150px;" onchange="selectSub(this.value)">
+				            	<option value="">
+									---全部---
+								</option>
+								
+								
+									
+									
+										<option value="220">
+											重点项目
+										</option>
+									
+								
+									
+									
+										<option value="222">
+											重大项目
+										</option>
+									
+								
+									
+									
+										<option value="218">
+											面上项目
+										</option>
+									
+								
+									
+									
+										<option value="649">
+											专项基金项目
+										</option>
+									
+								
+									
+									
+										<option value="339">
+											重大研究计划
+										</option>
+									
+								
+									
+									
+										<option value="579">
+											联合基金项目
+										</option>
+									
+								
+									
+									
+										<option value="630">
+											青年科学基金项目
+										</option>
+									
+								
+									
+									
+										<option value="631">
+											地区科学基金项目
+										</option>
+									
+								
+									
+									
+										<option value="432">
+											创新研究群体科学基金
+										</option>
+									
+								
+									
+									
+										<option value="2699">
+											优秀青年科学基金项目
+										</option>
+									
+								
+									
+									
+										<option value="429">
+											国家杰出青年科学基金
+										</option>
+									
+								
+									
+									
+										<option value="433">
+											国际(地区)合作与交流项目
+										</option>
+									
+								
+									
+									
+										<option value="635">
+											国家基础科学人才培养基金
+										</option>
+									
+								
+									
+									
+										<option value="2734">
+											海外青年学者合作研究基金
+										</option>
+									
+								
+									
+									
+										<option value="632">
+											海外及港澳学者合作研究基金
+										</option>
+									
+								
+									
+									
+										<option value="51">
+											国家重大科研仪器设备研制专项
+										</option>
+									
+								
+									
+									
+										<option value="2735">
+											香港、澳门青年学者合作研究基金
+										</option>
+									
+								
+									
+									
+										<option value="2733">
+											海外或港、澳青年学者合作研究基金
+										</option>
+									
+								
+							
+			        </select></td>
+			    </tr>
+			     <script>
+	            	function selectSub(param){
+	            		if (param == "")
+	            			return ;
+	            		var xmlhttp = CreateXmlHttp();
+	            		
+						xmlhttp.onreadystatechange = function(){
+							if (xmlhttp.readyState == 4) {
+								if(xmlhttp.status == 200){
+									$("#subGrantName").empty();
+									$("#subGrantName").append("<option value=''>---全部---</option>");
+									$("#subGrantName").append(xmlhttp.responseText);
+								} else {
+									alert(xmlhttp.status);
+								}
+							}
+						};
+						xmlhttp.open("post","fundingProjectSearchAction!selectSub.action?parentCode="+param+"&type=2",true);
+						xmlhttp.send(null);
+	            	}
+	            	
+	            </script>
+			    <tr>
+			    	<td align="right">亚类说明：</td>
+			        <td><select name="fundingProject.subGrantCode" class="select1" style="width:150px;" id="subGrantName" onchange="selectHelp(this.value)">
+			            	<option value="" selected="selected"></option>
+			        </select></td>
+			    </tr>
+			    <script>
+	            	function selectHelp(param){
+	            		if (param == "")
+	            			return ;
+	            		var xmlhttp = CreateXmlHttp();
+	            		
+						xmlhttp.onreadystatechange = function(){
+							if (xmlhttp.readyState == 4) {
+								if(xmlhttp.status == 200){
+									$("#helpGrantName").empty();
+									$("#helpGrantName").append("<option value=''>---全部---</option>");
+									$("#helpGrantName").append(xmlhttp.responseText);
+								} else {
+									alert(xmlhttp.status);
+								}
+							}
+						};
+						xmlhttp.open("post","fundingProjectSearchAction!selectSub.action?parentCode="+param+"&type=3",true);
+						xmlhttp.send(null);
+	            	}
+	            </script>
+			    <tr>
+			    	<td align="right">附注说明：</td>
+			        <td><select name="fundingProject.helpGrantCode" id="helpGrantName" class="select1" style="width:150px;">
+				            	<option value="" selected="selected"></option>
+			            	</select></td>
+			    </tr>
+			    <tr>
+			    	<td align="right">项目主题词：</td>
+			        <td><input type="text" name="fundingProject.keyword" value="" class="mail" style="width:150px;"></td>
+			    </tr>
+			    <tr>
+			    	<td align="right">批准年度：</td>
+			        <td><input type="text" onfocus="WdatePicker({dateFmt:'yyyy', minDate: '1986', maxDate:'%y'})" name="fundingProject.statYear" value="" class="Wdate" style="width: 150px;"></td>
+			    </tr>
+			</tbody>
+			</table>
+			<p style="width:345px;float:right;margin-right:100px;margin-top:5px;">
+             	<input style="float:left;width:70px;padding:5px;" type="text" name="checkCode" class="keyword2"  id="keyword2"  value="请输入验证码" onblur="if(value=='') value='请输入验证码'" onfocus="if(value=='请输入验证码') value=''">
+            	<!--<span style="float:left" class="imgcheckcode"></span>		
+            	<span  style="float:left;padding-top: 5px;cursor:pointer"  onclick="generate_checkcode()">换一张</span>
+        		-->
+        		
+    <script type="text/javascript">  
+	     function changeValidateCode(obj) {  
+	        //获取当前的时间作为参数，无具体意义  
+	        var timenow = new Date().getTime();  
+	        //每次请求需要一个不同的参数，否则可能会返回同样的验证码  
+	        //这和浏览器的缓存机制有关系，也可以把页面设置为不缓存，这样就不用这个参数了。  
+	        obj.src="randomAction.action?d="+timenow;  
+	     }  
+	     function changeYanzhengma(){
+	     	document.getElementById("yanzhengma").src = "randomAction.action";
+	     }
+ 	</script>  
+ 	<img id="yanzhengma" name="yanzhengma" src="randomAction.action" onclick="changeValidateCode(this)" style="float:left;margin-right:0;" alt="看不清楚？点击刷新"/>
+ 	<span style="float:left;padding-top: 5px;cursor:pointer;"  onclick="changeYanzhengma();">换一张</span> 
+
+        		<input type="submit" class="buton" style="float:left;margin-right:0;" value="检&nbsp;索" >
+       		</p>       
+       <script type="text/javascript">
+       	function check1(){ 
+            		if($("#keyword2").val() == null || $("#keyword2").val() == "" || $("#keyword2").val()  =="请输入验证码"){
+           				alert("请输入验证码");
+           				return false;
+            		}else{
+            			$("#currentPage").val(1);
+            			return true;
+            		}
+            		
+            }
+       </script>
+	</form>
+</div>
+<!--<div id="selct" style="margin-top:10px\9"></div>
+--><div id="content">
+	<script type="text/javascript">
+
+		function findShenQingCode() {
+			var val = $("#shenQingCode").val();
+			var result = $.ajax( {
+				url : "projectSearch!searchShenQingCode.action?t="
+						+ new Date().getTime() + "&shenqingCode=" + val,
+				async : false
+			}).responseText;
+			var obj = $("#sehqningResult");
+			obj.empty();
+			var jsonObject = JSON.parse(result);
+			for ( var i = 0; i < jsonObject.length; i++) {
+				obj.append("<li><a href=javascript:searchByShenqingCode('"
+						+ jsonObject[i].areaCode + "')>" + jsonObject[i].areaCode
+						+ "&nbsp;" + jsonObject[i].areaName + "</a></li>");
+			}
+		}
+
+		function searchByShenqingCode(val) {
+		 	$("#currentPage").val(1);
+			var pageSize = $("#pageSizeSelect").val();
+			
+		 	$("#projectApplyCode2").val(val);
+		 	$("#projectApplyCode2").attr('name','project.applyCode');
+		 	$("#projectApplyCode").attr('name','');
+		 	
+			var options = {
+				success : showResponse
+			};
+			
+			$("#shenQingCode").val(val);
+			
+			$("#currentPage").val(1);
+			$("#searchProjectForm").ajaxSubmit(options);
+			
+			$("#projectApplyCode2").val("");
+		 	$("#projectApplyCode2").attr('name','');
+		 	$("#projectApplyCode").attr('name','project.applyCode');
+		 	
+		}
+	</script>
+
+	<script language="javascript">
+		$(function() {
+		
+			$(".daima").click(function(e) {
+				e ? e.stopPropagation() : event.cancelBubble = true;
+			});
+			$(".daima").click(function() {
+				$(".sqdm").show();
+			});
+			$(document.body).click(function() {
+				$(".sqdm").hide();
+			});
+		})
+	</script>
+
+	<p class="list1 nan_list" id="num">
+	        根据检索条件,检索到 <strong   style="color: red">387395</strong>条
+	</p> 
+	<p class="msg">
+		<script type="text/javascript">
+		function selectYear(param) {
+			$("#pageSize").val(param);
+			var pageVal = $("#currentPage").val();
+			pageVal = parseInt(pageVal);
+			$("#currentPage").val(1);
+			//var code = $("#shenQingCode").val();
+			//var yearVal = $("#yearSort").val();
+		
+		 	//$("#yearSortHidden").val(yearVal);
+			document.all.searchFundingProject.submit();
+		 
+		}
+		</script>
+
+		<span>每页显示数据 <select name="pageSize" class="pages"
+				onchange="selectYear(this.value)" id="pageSizeSelect">
+				
+					<option value="7" selected="selected">
+						7
+					</option>
+					<option value="14">
+						14
+					</option>
+					<option value="21">
+						21
+					</option>
+				
+				
+				
+			</select>条</span>
+		<!--<span>申请代码 <input type="text" name="daima" id="shenQingCode"
+				onkeyup="findShenQingCode()" class="daima" /> </span>
+
+		--><script type="text/javascript">
+			function yearSort() {
+				var options = {
+					success : showResponse
+				};
+				var pageSize = $("#pageSizeSelect").val();
+				$("#pageSize").val(pageSize);
+				var pageVal = $("#currentPage").val();
+				pageVal = parseInt(pageVal);
+				var code = $("#shenQingCode").val();
+				var yearVal = $("#yearSort").val();
+				
+			 	$("#yearSortHidden").val(yearVal);
+			 	$("#searchProjectForm").ajaxSubmit(options);
+				 
+			}
+		</script>
+		<!--<span>按年份排序方式 <select onchange="yearSort()" name="yearSort"
+				class="pages" id="yearSort">
+				<option value="0">
+					不排序
+				</option>
+				<option value="1">
+					按年份降序
+				</option>
+				<option value="2">
+					按年份升序
+				</option>
+			</select> </span>
+
+	--></p>
+	<div class="sqdm">
+		<ul id="sehqningResult">
+		</ul>
+	</div>
+
+	<div id="right">
+		<div class="jlu list2">
+			<div class="left">
+				<ul id="project_result">
+					
+						
+							<li class="time_li">
+								<div class="left">
+									<img src="images/tub.png" alt="" />
+								</div>
+								<dl class="time_dl">
+									<dt>
+										<font style="font-size:15px;color:blue;">惯性耦合多自由度非线性振动的试验和理论研究</font>
+									</dt>
+									<dd>
+										批准号：18770317
+									</dd>
+									<dd>
+										项目类别：面上项目
+									</dd>
+									<dd>
+										依托单位：
+										哈尔滨工业大学
+									</dd>
+									<dd>
+										项目负责人：
+										张嘉钟
+									</dd>
+									<dd>
+										资助经费：1（万元）
+									</dd>
+									<dd>
+										关键词：***
+									</dd>
+									<dd>
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+									</dd>
+								</dl>
+							</li>
+						
+							<li class="time_li">
+								<div class="left">
+									<img src="images/tub.png" alt="" />
+								</div>
+								<dl class="time_dl">
+									<dt>
+										<font style="font-size:15px;color:blue;">模糊随机振动的基本理论</font>
+									</dt>
+									<dd>
+										批准号：18770318
+									</dd>
+									<dd>
+										项目类别：面上项目
+									</dd>
+									<dd>
+										依托单位：
+										哈尔滨工业大学
+									</dd>
+									<dd>
+										项目负责人：
+										欧进萍
+									</dd>
+									<dd>
+										资助经费：2（万元）
+									</dd>
+									<dd>
+										关键词：***
+									</dd>
+									<dd>
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+									</dd>
+								</dl>
+							</li>
+						
+							<li class="time_li">
+								<div class="left">
+									<img src="images/tub.png" alt="" />
+								</div>
+								<dl class="time_dl">
+									<dt>
+										<font style="font-size:15px;color:blue;">高速物体对固体介质的侵彻现象研究</font>
+									</dt>
+									<dd>
+										批准号：18770319
+									</dd>
+									<dd>
+										项目类别：面上项目
+									</dd>
+									<dd>
+										依托单位：
+										南京理工大学
+									</dd>
+									<dd>
+										项目负责人：
+										魏惠之
+									</dd>
+									<dd>
+										资助经费：2（万元）
+									</dd>
+									<dd>
+										关键词：***
+									</dd>
+									<dd>
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+									</dd>
+								</dl>
+							</li>
+						
+							<li class="time_li">
+								<div class="left">
+									<img src="images/tub.png" alt="" />
+								</div>
+								<dl class="time_dl">
+									<dt>
+										<font style="font-size:15px;color:blue;">粘弹塑性本构理论及其应用</font>
+									</dt>
+									<dd>
+										批准号：18770320
+									</dd>
+									<dd>
+										项目类别：面上项目
+									</dd>
+									<dd>
+										依托单位：
+										华中科技大学
+									</dd>
+									<dd>
+										项目负责人：
+										杨挺青
+									</dd>
+									<dd>
+										资助经费：2（万元）
+									</dd>
+									<dd>
+										关键词：***
+									</dd>
+									<dd>
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+									</dd>
+								</dl>
+							</li>
+						
+							<li class="time_li">
+								<div class="left">
+									<img src="images/tub.png" alt="" />
+								</div>
+								<dl class="time_dl">
+									<dt>
+										<font style="font-size:15px;color:blue;">格子气方法及其应用</font>
+									</dt>
+									<dd>
+										批准号：18770322
+									</dd>
+									<dd>
+										项目类别：面上项目
+									</dd>
+									<dd>
+										依托单位：
+										吉林大学
+									</dd>
+									<dd>
+										项目负责人：
+										胡守信
+									</dd>
+									<dd>
+										资助经费：1.5（万元）
+									</dd>
+									<dd>
+										关键词：***
+									</dd>
+									<dd>
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+									</dd>
+								</dl>
+							</li>
+						
+							<li class="time_li">
+								<div class="left">
+									<img src="images/tub.png" alt="" />
+								</div>
+								<dl class="time_dl">
+									<dt>
+										<font style="font-size:15px;color:blue;">随机参数结构的特征值问题及响应分析的数值方法</font>
+									</dt>
+									<dd>
+										批准号：18770323
+									</dd>
+									<dd>
+										项目类别：面上项目
+									</dd>
+									<dd>
+										依托单位：
+										吉林大学
+									</dd>
+									<dd>
+										项目负责人：
+										陈塑寰
+									</dd>
+									<dd>
+										资助经费：1.5（万元）
+									</dd>
+									<dd>
+										关键词：***
+									</dd>
+									<dd>
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+									</dd>
+								</dl>
+							</li>
+						
+							<li class="time_li">
+								<div class="left">
+									<img src="images/tub.png" alt="" />
+								</div>
+								<dl class="time_dl">
+									<dt>
+										<font style="font-size:15px;color:blue;">应变空间与多重屈服面岩土塑性理论</font>
+									</dt>
+									<dd>
+										批准号：18770324
+									</dd>
+									<dd>
+										项目类别：面上项目
+									</dd>
+									<dd>
+										依托单位：
+										中国人民解放军空军工程大学
+									</dd>
+									<dd>
+										项目负责人：
+										郑颖人
+									</dd>
+									<dd>
+										资助经费：2.5（万元）
+									</dd>
+									<dd>
+										关键词：***
+									</dd>
+									<dd>
+										结题项目：<a target="_blank" href="projectDetail.action?pid="></a>
+									</dd>
+								</dl>
+							</li>
+						
+					
+				</ul>
+				<font color="red" id="noData" style="padding-left: 200px;"></font>
+			</div>
+		</div>
+	</div>
+	<div id="left">
+		<ul class="sidebar" id="fir_side">
+			<li>
+				<a href="#">期刊论文</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">会议论文</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">著作</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">奖励</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">资助项目</a><span>[4235]</span>
+			</li>
+		</ul>
+
+		<ul class="sidebar">
+			<li>
+				<a href="#">2001</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2002</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2003</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2004</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2005</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2006</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2007</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2008</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2009</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2010</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2011</a><span>[4235]</span>
+			</li>
+			<li>
+				<a href="#">2012</a><span>[4235]</span>
+			</li>
+		</ul>
+	</div>
+	<div style="float:right;margin-right:10px;">
+			<input type="text" onClick="WdatePicker({dateFmt:'yyyy', minDate: '1986', maxDate:'%y'})" id="fundedYearStart" style="height:20px;width:50px;margin-left:0px;"  />&nbsp;到
+			<input onClick="WdatePicker({dateFmt:'yyyy', minDate: '1986', maxDate:'%y'})" type="text" id="fundedYearEnd" style="height:20px;width:50px"  />年
+			<input type="button" value="确定" style="width:45px;height:30px;" onclick="changeYear();">
+		</div>
+	
+
+	<div class="clear"></div>
+	<div class="page" id="page" style="width:400px;">
+		<ul>
+			<li class="pag_col">
+				<a style="width: 60px;" href="javascript:submitProjectAjax(1)">首页</a>
+			</li>
+			<li>
+				<a href="javascript:submitProjectAjax(2)" style="width: 60px;">上一页</a>
+			</li>
+			<li>
+				<a href="javascript:submitProjectAjax(3)" style="width: 60px;">下一页</a>
+			</li>
+			<li>
+				<a href="javascript:submitProjectAjax(4)" style="width: 60px;">最后一页</a>
+			</li>
+			<li>
+				<input type="text" id="currentPageGo" style="width: 30px;" />
+			</li>
+			<li class="go pag_col">
+				<a href="javascript:go()">Go</a>
+			</li>
+		</ul>
+		<font color="red" id="currentPageNav" style="margin-top: 50px;">
+		2 / </font>
+	</div>
+	
+	<script type="text/javascript">
+
+		function go() {
+		
+			var currentPage = $("#currentPageGo").val();
+			if (currentPage == null || currentPage == '') {
+				alert("请输入页数");
+				return false;
+			}
+			var options = {
+				success : showResponse
+			};
+			currentPage = parseInt(currentPage);
+		
+			var pageNum = $("#hiddenResultNum").val();
+		
+			var pageSize = $("#pageSize").val();
+			pageNum = parseInt(pageNum);
+			pageSize = parseInt(pageSize);
+			if (pageNum % pageSize == 0) {
+				pageNum = pageNum / pageSize;
+			} else {
+				pageNum = pageNum / pageSize;
+				pageNum = parseInt(pageNum) + 1;
+			}
+			if (currentPage > pageNum) {
+				alert("输入的页数过大");
+				return;
+			}
+		
+			$("#currentPage").val(currentPage);
+		
+			//var code = $("#shenQingCode").val();
+			//var yearVal = $("#yearSort").val();
+			
+		 	//$("#yearSortHidden").val(yearVal);
+		 	document.all.searchFundingProject.submit();
+		 
+		}
+	</script>
+
+	<script type="text/javascript">
+		function submitProjectAjax(currentPage) {
+			//var options = {
+			//	success : showResponse
+			//};
+			var pageVal = $("#currentPage").val();
+			pageVal = parseInt(pageVal);
+			currentPage = parseInt(currentPage);
+		
+			if (currentPage == 1) {
+				$("#currentPage").val(1);
+			} else if (currentPage == 2) {
+				if (pageVal - 1 <= 0) {
+					pageVal = 1;
+					alert("已经是第一页");
+					return;
+				}
+				$("#currentPage").val(pageVal - 1);
+			} else if (currentPage == 3) {
+		
+				var pageNum = $("#hiddenResultNum").val();
+		
+				var pageSize = $("#pageSize").val();
+				pageNum = parseInt(pageNum);
+				pageSize = parseInt(pageSize);
+				if (pageNum % pageSize == 0) {
+					pageNum = pageNum / pageSize;
+				} else {
+					pageNum = pageNum / pageSize;
+					pageNum = parseInt(pageNum) + 1;
+				}
+		
+				if (pageVal == pageNum) {
+					alert("已经是最后一页");
+					return;
+				}
+		
+				$("#currentPage").val(pageVal + 1);
+		
+			} else if (currentPage == 4) {
+		
+				var pageNum = $("#hiddenResultNum").val();
+		
+				var pageSize = $("#pageSize").val();
+				pageNum = parseInt(pageNum);
+				pageSize = parseInt(pageSize);
+				if (pageNum % pageSize == 0) {
+					pageNum = pageNum / pageSize;
+				} else {
+					pageNum = pageNum / pageSize;
+					pageNum = parseInt(pageNum) + 1;
+				}
+				$("#currentPage").val(pageNum);
+		
+			}
+			//var code = $("#shenQingCode").val();
+			//var yearVal = $("#yearSort").val();
+			
+		 	//$("#yearSortHidden").val(yearVal);
+		 	document.all.searchFundingProject.submit();
+		}
+	</script>
+
+
+	<script type="text/javascript">
+		var pageNum = $("#hiddenResultNum").val();
+		var pageSize = $("#pageSize").val();
+		pageNum = parseInt(pageNum);
+		pageSize = parseInt(pageSize);
+		if (pageNum % pageSize == 0) {
+			pageNum = pageNum / pageSize;
+		} else {
+			pageNum = pageNum / pageSize;
+			pageNum = parseInt(pageNum) + 1;
+		}
+		$("#currentPageNav").append(pageNum + "页");
+	</script>
+</div>
+
+<script type="text/javascript">
+	//创建异步提交的对象
+	var xmlhttp = CreateXmlHttp();
+	var url = "CountNumAction!search.action";
+	
+	xmlhttp.open("POST",url,true);
+	xmlhttp.onreadystatechange = function complete(){
+		if (xmlhttp.readyState == 4){
+			if (xmlhttp.status == 200){
+				var obj = $("#left");
+				obj.empty();
+				obj.append(xmlhttp.responseText);
+			}
+		}
+	};
+	xmlhttp.send();
+	
+</script>
+<script type="text/javascript">
+	function changeYear(){
+		var fundedYearStart = document.all.fundedYearStart.value;
+		if (fundedYearStart == ""){
+			alert("请选择开始年份！");
+			return;
+		}
+		var fundedYearEnd = document.all.fundedYearEnd.value;
+		if (fundedYearEnd == ""){
+			alert("请选择结束年份！");
+			return;
+		}
+		if (fundedYearStart > fundedYearEnd){
+			alert("开始年份不能大于结束年份！");
+			return;
+		}
+		
+		//利用ajax异步提交，局部刷新
+		var xmlhttp = CreateXmlHttp();
+		var url = "CountNumAction!searchByYear.action?start="+fundedYearStart+"&end="+fundedYearEnd;
+		
+		xmlhttp.open("POST",url,true);
+		xmlhttp.onreadystatechange = function complete(){
+			if (xmlhttp.readyState == 4){
+				if (xmlhttp.status == 200){
+					var obj = $("#left");
+					obj.empty();
+					obj.append(xmlhttp.responseText);
+				}
+			}
+		};
+		xmlhttp.send();
+		
+	}
+</script>
+
+
+
+
+<div class="foot_bg"></div>
+<p id="banq">
+	<span>版权所有：国家自然科学基金委员会</span><span>京ICP备05002826号</span>
+</p>
+</div>
+</div>
+</body>
+</html>
