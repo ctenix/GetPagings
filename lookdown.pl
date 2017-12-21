@@ -11,17 +11,18 @@ use HTTP::Cookies;
 ###########################################################
 @list_url=();
 @download_url=();
-foreach (1..35)#首先自己看看需要爬多少个页面
+foreach (1..230)#首先自己看看需要爬多少个页面
         {
          my $url = URI->new('http://npd.nsfc.gov.cn/fundingProjectSearchAction!search.action');
-         my($field,$page,$year,$size) = ("B06",$_,"2008","21");#提交表单参数，包括学科领域、年份以及每页显示条目数等
+         my($field,$page,$year,$size, $code) = ("E",$_,"2011","30","4mBy");#提交表单参数，包括学科领域、年份以及每页显示条目数等
          $url->query_form
          (
            # All form pairs:
-           'fundingProject.applyCode'  => $field, #领域代码
-           'currentPage' => $page,
-		   'fundingProject.statYear' => $year,
-		   'pageSize' => $size,
+          'fundingProject.applyCode'  => $field, #领域代码
+          'currentPage' => $page,#当前页码
+		      'fundingProject.statYear' => $year,#资助年份
+		      'pageSize' => $size,#分页大小
+          'checkCode' => $code,#验证码
          );
          push @list_url,$url;
         }
@@ -43,7 +44,7 @@ $tmp_ua->agent(
 ###########################################################
 ###3，最后一个个爬取我们构造好的网站地址，找到相应的信息
 ###########################################################
-open FH,">aa.txt";  #可以保存我们需要的东西
+open FH,">E-2011.txt";  #可以保存我们需要的东西
 $url_index="http://npd.nsfc.gov.cn/";
 #必须要先访问一下主页并且保存cookies才能爬查询网页
 my $response = $tmp_ua->get($url_index);  #访问了主页的同时也储存了cookies
