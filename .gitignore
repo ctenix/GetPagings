@@ -6,7 +6,8 @@
 *.o
 *.pm.tdy
 *.bs
-
+# vscode settings
+.vscode/
 # Devel::Cover
 cover_db/
 
